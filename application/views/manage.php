@@ -191,20 +191,59 @@
 														</th>
 														
 
-														<th>Action</th>
 													</tr>
 												</thead>
 												<tbody>
-
-
-
-												<tr>
-												
-
-												</tr>
-					
-
-											</tbody>
+                      
+					  <?php
+					  foreach($result as $r){
+				   echo "<tr>";
+				   echo "<td style='text-align:center;'>
+				   <label class='pos-rel'>
+					   <input type='checkbox' class='ace' name='chk_uid[]' value='$r->su_id'/>
+					   <span class='lbl'></span>
+					 </label>
+				 </td>";
+				  echo "<td>".$r->username."</td>";
+				  echo "<td>".$r->firstname." ".$r->lastname."</td>";
+				  echo "<td>".$r->gender."</td>"; 
+				  echo "<td>".$r->name."</td>";
+				  echo "<td>".$r->email."</td>";
+				  if($r->enable!=1 ){?>
+				 
+					<td class="text-center"><a type="button" data-toggle='tooltip' data-html='true' data-placement='bottom' aria-describedby='passHelp' title='<h5>เปิดการใช้งาน</h5>' data-original-title='Rule' onclick="javascript:window.location='<?php
+					echo base_url() . 'user/enable/' . $r->su_id;
+					?>';"><i class='btn-danger btn-sm fa fa-times'></i></a>
+					<?php
+				  }
+				  else{?>
+		  
+					<td class="text-center"><a type="button" data-toggle='tooltip' data-html='true' data-placement='bottom' aria-describedby='passHelp' title='<h5>ปิดการใช้งาน</h5>'  data-original-title='Rule' onclick="javascript:window.location='<?php
+					echo base_url() . 'user/disable/' . $r->su_id;
+					?>';"><i class='btn-success btn-sm fa fa-check'></i></a>                      
+					<?php
+				  }
+				  ?> 
+  
+  
+				  <a class='btn-primary' data-toggle='tooltip'  onclick="javascript:window.location='<?php
+				  echo base_url() . 'user/rule/' . $r->su_id;
+				  ?>';"><i class='btn-primary btn-sm fa fa-gear'> </i></a>
+  
+  
+				  <a type ='button' data-toggle='tooltip'  class=' ' onclick="javascript:window.location='<?php
+				  echo base_url() . 'user/edit/' . $r->su_id;
+				  ?>';"><i class='btn-primary btn-sm fa fa-wrench'></i></a>
+  
+					<a type ='button' data-toggle='tooltip'  class=' ' onclick="if (confirm('Are you sure you want to delete '))javascript:window.location='<?php
+				  echo base_url() . 'user/deleteuser/' . $r->su_id;
+				  ?>';"><i class='btn-dark btn-sm fa fa-trash'></i></a>
+				  <?php  
+			  echo "</tr>";
+		  }
+	  ?>
+						<?php echo form_close();?>
+					  </tbody>
 
 										</table>
 

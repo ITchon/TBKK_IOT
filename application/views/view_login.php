@@ -1,3 +1,5 @@
+
+
 <body   style="background-color:#E4E6E9">
 		
 				<div class="row">
@@ -5,23 +7,26 @@
 						<div class="login-container">
 							<div class="center">
 							<br><br><br>
-							<img class="nav-user-photo" src="<?php echo base_url(); ?>themes/ace_admin/img/box_icon.png" alt="Box icon" height="150" width="150"/>
-							
+							<div class="rotate-center">
+							<img class="nav-user-photo" src="<?php echo base_url(); ?>./uploads/pic/iot.png" alt="Box icon" height="150" width="150"/>
+							</div>
 							<!-- <img class="nav-user-photo" src="<?php echo base_url(); ?>themes/smartadmin/img/box_icon2.png" alt="Box icon" height="150" width="150"/> -->
+							  <div class="animation">
 								<h1>
 									<!-- <i class="ace-icon fa fa-leaf green"></i> -->
-									<span class="red">BOX</span>
-									<span class="grey" id="id-text2">CONTROL SYSTEM</span>
+								
+									<span class="blue" id="id-text2">INTERNET OF THONGS</span>
 								</h1>
 
 								<h4 class="blue" id="id-company-text">&copy; TBKK</h4>
+							  </div>
 							</div>
 
 							<div class="space-6"></div>
 
-							<div class="position-relative">
+							<div class="position-relative animation ">
 								<div id="login-box" class="login-box visible widget-box no-border" style="background-color: #BCC6CF;">
-									<div class="widget-body">
+									<div class="widget-body ">
 										<div class="widget-main" style="padding: 16px 36px 36px;padding-bottom: 16px; box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0px 0px 4px 0px #212529">
 											<h4 class="header blue lighter bigger">
 												<i class="ace-icon fa fa-coffee green"></i>
@@ -108,7 +113,7 @@
 								</div><!-- /.login-box -->
 
 								<div align="right">
-									<h5>(Version 1.0)</h5>
+									<!-- <h5>(Version 1.0)</h5> -->
 								</div>
 								
 <!-- 

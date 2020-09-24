@@ -72,14 +72,36 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $active_group = 'default';
 $query_builder = TRUE;
-
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
-	'database' => 'issue_report',
-	'dbdriver' => 'mysqli',
+	'port' => '1433',
+	'hostname' => 'Driver={SQL Server};Server=192.168.161.101\PCSDBSV;Database=tbkk_iot;',
+	'username' => 'sa',
+	'password' => 'Te@m1nw',
+	'database' => 'tbkk_iot',
+	'dbdriver' => 'odbc',
+	'dbprefix' => '',
+	'pconnect' => FALSE,
+	'db_debug' => (ENVIRONMENT !== 'production'),
+	'cache_on' => FALSE,
+	'cachedir' => '',
+	'char_set' => 'utf8',
+	'dbcollat' => 'utf8_general_ci',
+	'swap_pre' => '',
+	'encrypt' => FALSE,
+	'compress' => FALSE,
+	'stricton' => FALSE,
+	'failover' => array(),
+	'save_queries' => TRUE
+);
+$db['smart_fac'] = array(
+	'dsn'	=> '',
+	'port' => '1433',
+	'hostname' => 'Driver={SQL Server};Server=192.168.161.101\PCSDBSV;Database=smart_fac;',
+	'username' => 'sa',
+	'password' => 'Te@m1nw',
+	'database' => 'tbkk_iot',
+	'dbdriver' => 'odbc',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),

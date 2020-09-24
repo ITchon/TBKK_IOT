@@ -10,10 +10,11 @@
 					<span class="icon-bar"></span>
 				</button>
 
-				<div class="navbar-header pull-left">
+				<div class="navbar-header pull-left ">
 					<a href="<?php echo base_url() . 'Dashboard/home' ; ?>" class="navbar-brand">
-					<i class="fa fa-cubes"></i>
-						<small> &nbsp; Box Control System</small>
+					<i class="fa fa-react 	rotate-center"></i>
+
+						<small> &nbsp;TBKK IOT</small>
 					</a>
 				</div>
 
@@ -26,9 +27,9 @@
 								<span class="user-info" height="50" width="90">
 									<small>Welcome,</small>
 									<?php 
-									echo $this->session->userdata('sessName');
+									echo $this->session->userdata('username');
 
-									$id = $this->session->userdata('sessUsrId');
+									$id = $this->session->userdata('su_id');
 
 										// echo $list_user[0]['username'];
 									?>
@@ -55,7 +56,7 @@
 								<li class="divider"></li>
 
 								<li>
-									<a href="<?php echo base_url()."manage/logout";?>" title="Sign Out" data-action="userLogout" data-logout-msg="You can improve your security further after logging out by closing this opened browser">
+									<a href="<?php echo base_url()."logout";?>" title="Sign Out" data-action="userLogout" data-logout-msg="You can improve your security further after logging out by closing this opened browser">
 										<i class="ace-icon fa fa-power-off"></i>
 										Logout
 									</a>

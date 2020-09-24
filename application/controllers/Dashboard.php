@@ -7,10 +7,11 @@ class Dashboard extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-        $this->load->view('header');
-        $this->load->view('menu');
+		$this->load->database(); 
+        $this->load->model('model');
+		$this->model->load_menu();
 	}
 	public function home(){
-        $this->load->view('manage');
+        $this->load->view('dashboard');
 	}
 }

@@ -14,6 +14,7 @@
          $asset_url = "themes/ace_admin/";
          $js_url = "themes/ace_admin/js/";
         ?>
+		 <script src="https://kit.fontawesome.com/801a394883.js" crossorigin="anonymous"></script>
 		<!-- bootstrap & fontawesome -->
 		<link rel="stylesheet" href="<?php echo base_url() . $css_url; ?>bootstrap.min.css" />
 		<link rel="stylesheet" href="<?php echo base_url() . $asset_url; ?>font-awesome/4.5.0/css/font-awesome.min.css" />
@@ -102,6 +103,54 @@
 		<script src="<?php echo base_url() . $js_url; ?>ace-elements.min.js"></script>
 		<script src="<?php echo base_url() . $js_url; ?>ace.min.js"></script>
 
+	<style>
+		.select-info{
+			padding-left : 10px /*Data table row select */
+		}
+		.rotate-center {
+			-webkit-animation: rotate-center 1s ease-in-out both;
+			        animation: rotate-center 1s ease-in-out both;
+		}
+		.animation{
+		  animation: expand_center 950ms;
+		
+		}
+		@keyframes expand_center {
+		  0% {
+		  clip-path: polygon(50% 100%,50% 0,50% 0,50% 100%);
+		    -webkit-clip-path: polygon(50% 100%,50% 0,50% 0,50% 100%);
+		 }
+		  100%{
+		  clip-path: polygon(0 100%, 0 0, 100% 0, 100% 100%);
+		    -webkit-clip-path: polygon(0 100%, 0 0, 100% 0, 100% 100%);
+		  }
+		}
+		@-webkit-keyframes rotate-center {
+		  0% {
+		    -webkit-transform: rotate(0);
+		            transform: rotate(0);
+		  }
+		  100% {
+		    -webkit-transform: rotate(360deg);
+		            transform: rotate(360deg);
+		  }
+		}
+		@keyframes rotate-center {
+		  0% {
+		    -webkit-transform: rotate(0);
+		            transform: rotate(0);
+		  }
+		  100% {
+		    -webkit-transform: rotate(360deg);
+		            transform: rotate(360deg);
+		  }
+		}
 
+
+
+
+
+
+	</style>
 
 	</head>

@@ -7,8 +7,10 @@ class Login extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-
-
+        $this->load->helper('form');
+        $this->load->database(); 
+        $this->load->model('model');
+        $this->load->model('model_user');
 	}
 	 
 	public function index()
@@ -23,7 +25,10 @@ class Login extends CI_Controller {
 	{
 
 
-		$action = base64_decode($this->input->post('action'));
+		$user = $this->input->post('txt_usr');
+        $pass = $this->input->post('txt_pwd');
+  
+        $data= $this->model->get_user_by($user,$pass);
 
 		if($data==true) {
             $arrData = array('status'=> $data['u_enable'], 'su_id'=>$data['su_id'],
@@ -49,7 +54,7 @@ class Login extends CI_Controller {
 				<strong>Error!</strong><br />แอคเคาท์นี้ถูกระงับ<br />Account is baned.</div>');
                 redirect('login'); 
              } else{
-                redirect('dashboard/show');
+                redirect('dashboard/home');
              }
         }
      else{
@@ -59,7 +64,7 @@ class Login extends CI_Controller {
 		</button>
 		<i class="fa-fw fa fa-times"></i>
 		<strong>Error!</strong><br />รหัสผ่านไม่ถูกต้อง กรุณาทำการตรวจสอบข้อมูลอีกครั้งค่ะ <br />Invalid Account : Please check your account correctly.</div>');
-        redirect('dashboard/home');  
+        redirect('login');  
      
 	 }
 				
