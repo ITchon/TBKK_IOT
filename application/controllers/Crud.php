@@ -31,7 +31,7 @@ public function __construct()
       $sql = "SELECT sp.sp_id,sp.name as p_name , spg.name as g_name ,sugp.spg_id ,sp.controller FROM sys_permissions sp 
       inner join sys_users_groups_permissions sugp ON sugp.spg_id = sp.spg_id 
       inner join sys_permission_groups spg on spg.spg_id = sp.spg_id 
-      left join sys_menu_groups smg on smg.spg_id = spg.spg_id
+      inner join sys_menu_groups smg on smg.spg_id = spg.spg_id
       where sugp.sug_id= $sug_id ORDER BY smg.order_no ASC , sp.name";
       $query = $this->db->query($sql); 
       $result_group= $query->result();
@@ -74,7 +74,7 @@ public function __construct()
             $query = $this->db->query($sql1); 
             $result_user= $query->result(); 
 
-            $sql2 =  "SELECT sug.sug_id, sug.enable, sug.name, sug.name as sug_name from sys_user_groups as sug where sug.sug_id = $id";
+            $sql2 =  "SELECT sug.sug_id, sug.enable, sug.name, sug.name as sug_name from sys_user_groups as sug where sug.sug_id = $id and sug.enable != 0 and sug.delete_flag != 0";
             $query = $this->db->query($sql2); 
             $result= $query->result(); 
 
@@ -82,7 +82,7 @@ public function __construct()
             $query = $this->db->query($sql2); 
             $result_all = $query->result(); 
 
-            $sql3 =  "SELECT * from sys_permission_groups where delete_flag != 0";
+            $sql3 =  "SELECT * from sys_permission_groups where enable != 0 and delete_flag != 0 ";
             $query = $this->db->query($sql3); 
             $result_group= $query->result(); 
 ?>

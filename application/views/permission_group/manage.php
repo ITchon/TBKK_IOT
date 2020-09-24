@@ -17,35 +17,13 @@
 					</div>
 
 					<div class="page-content">
-				
 						<div class="row">
-						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-
-	
-								<!-- widget div-->
-								<div>
-
-									<!-- widget edit box -->
-									<div class="jarviswidget-editbox">
-										<!-- This area used as dropdown edit box -->
-										
-									</div>
-									<!-- end widget edit box -->
-
-									<!-- widget content -->
-									<div class="widget-body no-padding">
-							
-					              
-					              
-										
-									<div class="row">
 							<div class="col-xs-12">
 								<!-- PAGE CONTENT BEGINS -->
 								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 										<?php if ($this->session->flashdata('msgResponse') != ''){ echo $this->session->flashdata('msgResponse'); } ?>
 									</div>
 									
-
 									<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
 									
 										<div class="jarviswidget jarviswidget-color-darken" id="wid-id-0" data-widget-editbutton="false">
@@ -58,8 +36,6 @@
 															</small> -->
 														</h1>
 													</div>
-										
-
 											<!-- widget div-->
 											<div>
 							
@@ -72,11 +48,9 @@
 
 
 														<!-- widget content -->
-										<div class="widget-body no-padding">
-															
-											<?php echo form_open('#', array('id' => 'frm_permissionmanagement', 'name'=>'	frm_permissionmanagement'));?>
-
-											<div class="table-responsive">
+								<div class="widget-body no-padding">
+									<?php echo form_open('#', array('id' => 'frm_permissionmanagement', 'name'=>'	frm_permissionmanagement'));?>
+									<div class="table-responsive">
 										<table id="dynamic-table" class="table table-striped table-bordered table-hover">
 												<thead>
 													<!-- <tr>
@@ -128,9 +102,9 @@
 											</tbody>
 
 										</table>
-                    </div>
-											<?php echo form_close();?>
-										</div>
+                   					</div>
+									<?php echo form_close();?>
+								</div>
 														<!-- end widget content -->
 
 

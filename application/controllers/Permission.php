@@ -26,7 +26,7 @@ class Permission extends CI_Controller {
         $sql =  'select sp.sp_id ,sp.name,spg.name as spg_name ,sp.enable from sys_permissions sp inner join sys_permission_groups spg on spg.spg_id = sp.spg_id where sp.delete_flag !=0';
         $query = $this->db->query($sql); 
         $data['result'] = $query->result(); 
-        $sql = "SELECT * FROM sys_permission_groups where delete_flag != 0 ";
+        $sql = "SELECT * FROM sys_permission_groups where delete_flag != 0 and enable != 0";
         $query = $this->db->query($sql);
         $data['excLoadG'] = $query->result(); 
         $this->load->view('permission/manage',$data);//bring $data 
@@ -34,11 +34,11 @@ class Permission extends CI_Controller {
         $id = $this->uri->segment('3');
         $sql = "SELECT sp.sp_id, sp.name as sp_name, spg.spg_id, spg.name as spg_name, sp.controller from sys_permissions as sp
         inner join sys_permission_groups as spg on spg.spg_id = sp.spg_id
-        where sp.sp_id = $id";
+        where sp.sp_id = $id ";
         $query = $this->db->query($sql); 
         $data['result'] = $query->result(); 
         $group = $data['result'][0]->spg_id;
-        $sql = "SELECT * from sys_permission_groups where delete_flag !=0 AND spg_id != $group";
+        $sql = "SELECT * from sys_permission_groups where delete_flag !=0 AND spg_id != $group  and enable != 0";
         $query = $this->db->query($sql); 
         $data['result_g'] = $query->result(); 
         }

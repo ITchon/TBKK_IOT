@@ -67,10 +67,8 @@ class Model extends CI_Model
     FROM sys_menus AS sm 
     inner JOIN sys_menu_groups AS smg ON smg.mg_id = sm.mg_id
     inner join sys_permission_groups as spg ON spg.spg_id = smg.spg_id 
-     inner join sys_users_groups_permissions as sugp ON sugp.spg_id = spg.spg_id
-    inner join sys_permissions as sp on sp.sp_id = smg.sp_id
-    inner join sys_users_permissions as sup on sup.sp_id = sp.sp_id
-    where sug_id = '.$sug_id.' and sup.su_id = '.$su_id.'
+    inner join sys_users_groups_permissions as sugp ON sugp.spg_id = spg.spg_id
+    where sug_id = '.$sug_id.' 
     ORDER BY smg.order_no ASC';     
     $query = $this->db->query($sql); 
     $result = $query->result();
@@ -79,7 +77,7 @@ class Model extends CI_Model
 
 
  function showsubmenu($id){
-    $sql =  "SELECT  sm.name,sm.mg_id,sm.method from sys_menus as sm
+    $sql =  "SELECT  sm.name,sm.mg_id,sp.controller from sys_menus as sm
     inner join sys_permissions as sp on sp.sp_id = sm.sp_id
     inner join sys_users_permissions as sup on sup.sp_id = sp.sp_id
     WHERE  sm.enable != 0 AND sp.enable != 0 ANd sup.su_id = $id ORDER BY sm.order_no ASC"; 
@@ -90,8 +88,8 @@ class Model extends CI_Model
 
 
  function givemeid($para){
-  $sql ="SELECT *  FROM sys_menus 
-  WHERE link='$para'  ";
+  $sql ="SELECT *  FROM sys_menus sm inner join sys_permissions sp on sp.sp_id = sm.sp_id
+  WHERE controller ='$para'  ";
 
     $query = $this->db->query($sql);  
    $data = $query->result(); 

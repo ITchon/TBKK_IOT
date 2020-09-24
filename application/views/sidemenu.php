@@ -31,8 +31,8 @@
                 <?php 	foreach($submenu as $s)  {  
                     if($r->mg == $s->mg_id) { 
                      ?>
-							<li class="<?php echo($mg[0]->method == $s->method)? " active ":"" ?>">
-								<a href="<?php echo base_url()?><?php echo $s->method ?>">
+							<li class="<?php echo($mg[0]->controller == $s->controller)? " active ":"" ?>">
+								<a href="<?php echo base_url()?><?php echo $s->controller ?>">
 									<i class="menu-icon fa fa-caret-right"></i>
                                     <?php echo $s->name ?>
 								</a>

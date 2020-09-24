@@ -57,7 +57,7 @@
 										<table id="dynamic-table" class="table table-striped table-bordered table-hover">
 												<thead>
 													<tr>
-								                    	<td colspan="9">
+								                    	<td colspan="10">
 									                    	<div id="btn_enable" class="btn btn-sm btn-success"><span class="fa fa-check-square-o"></span></div>
 									                    	<div id="btn_disable" class="btn btn-sm btn-danger"><span class="fa fa-times"></span></div>
 									                    	<div id="btn_delete" class="btn btn-sm btn-primary"><span class="fa fa-trash-o"></span></div>
@@ -70,25 +70,23 @@
 																<span class="lbl"></span>
 															</label>
 														</th>
-														<th>No</th>
-														<th>MachineNo</th>
+														<th class="center">
+															Detail
+														</th>
+														<th>Index</th>
+														<th>Machine NO</th>
+														<th>Date Time</th>
+														<th>Shift</th>
+														<th>Serial</th>
+														<th>QRrange</th>
 														<th>QRcode</th>
-														<th>Alarmcode</th>
-														<th style="text-align:center;">
-															<i class="ace-icon fa fa-calendar bigger-110 hidden-480"></i>
-															Start Date
-														</th>
-														<th style="text-align:center;">
-															<i class="ace-icon fa fa-calendar bigger-110 hidden-480"></i>
-															End Date
-														</th>
 														<th>Action</th>
-														
+													
 
 													</tr>
 												</thead>
 											<tbody >
-											<?php  
+											 <?php  
 												$result = array_filter($result);
 												if (!empty($result)) {
                       							$i = 1;	  	
@@ -103,23 +101,197 @@
 															<span class="lbl"></span>
 														</label>
 													</td>
-												    <td style="text-align:center;">'.$i.'</td>
+													<td class="center">
+														<div class="action-buttons">
+															<a href="#" class="green bigger-140 show-details-btn" title="Show Details">
+																<i class="ace-icon fa fa-angle-double-down"></i>
+																<span class="sr-only">Details</span>
+															</a>
+														</div>
+													</td>
+												    <td >'.$r->Index.'</td>
     											    <td>'.$r->MachineNo.'</td>
-    											    <td>'.$r->QRcode.'</td>
-													<td>'.$r->AlarmCode.'</td>
-													<td  class="text-center">'. date('Y-m-d H:i:s', strtotime($r->StartDateTime)).'</td>
-													<td  class="text-center">'. date('Y-m-d H:i:s', strtotime($r->EndDateTime)).'</td>
+    											    <td>'.$r->DateTime.'</td>
+    											    <td>'.$r->Shift.'</td>
+													<td>'.$r->Serial.'</td>
+													<td>'.$r->QRrange.'</td>
+													<td>'.$r->QRcode.'</td>
+												
 													    <td>
     											    <button type="button" value='.$r->Index.' class="btn btn-xs btn-default edit_form"><i class="fa fa-pencil"></i></button>
     											    <button type="button" value='.$r->Index.' class="btn btn-xs btn-default delete"><i class="fa fa-trash-o"></i></button>
                             						</td>    							 
 												</tr>';
 												$i++;	
-													} 
-												} ?>
+									?>
+												<tr class="detail-row">
+													<div class="row">
+														<td></td>
+														<td class="center" style="background-color:#ffffff">
+																		<div class="width-80 label label-info label-xlg arrowed-in arrowed-in-right">
+																			<div class="inline position-relative">
+																					<span class="white">Spare</span>
+																			</div>
+																		</div>
+											
+																	<div class="profile-user-info profile-user-info-striped">
+																		<div class="profile-info-row">
+																			<div class="profile-info-name"> ID Spare 1 </div>
+																			<div class="profile-info-value">
+																				<span><?php echo $r->ID_Spare1 ?></span>
+																			</div>
+																		</div>
 
+																		<div class="profile-info-row">
+																			<div class="profile-info-name">  ID Spare 2 </div>
+
+																			<div class="profile-info-value">
+																				<span><?php echo $r->ID_Spare2 ?></span>
+																			</div>
+																		</div>
+
+																		<div class="profile-info-row">
+																			<div class="profile-info-name">  ID Spare 3 </div>
+
+																			<div class="profile-info-value">
+																				<span><?php echo $r->ID_Spare3 ?></span>
+																			</div>
+																		</div>
+																	</div>
+															
+														</td>
+														<td class="center" style="background-color:#ffffff">
+																<div class="width-80 label label-info label-xlg arrowed-in arrowed-in-right">
+																			<div class="inline position-relative">
+																					<span class="white">ST1</span>
+																			</div>
+																		</div>
+																<div class="profile-user-info profile-user-info-striped">
+																	<div class="profile-info-row">
+																		<div class="profile-info-name">ST1SVPos </div>
+																		<div class="profile-info-value">
+																			<span><?php echo $r->ST1SVPos ?></span>
+																		</div>
+																	</div>
 												
-				
+																<div class="profile-info-row">
+																	<div class="profile-info-name"> ST1SVLoad</div>
+																	<div class="profile-info-value">
+																		<span><?php echo $r->ST1SVLoad ?></span>
+																	</div>
+																</div>
+												
+																<div class="profile-info-row">
+																	<div class="profile-info-name"> ST1Judgment</div>
+																	<div class="profile-info-value">
+																		<span><?php echo $r->ST1Judgment ?></span>
+																	</div>
+																</div>
+															</div>
+												
+														</td>
+														<td class="center" style="background-color:#ffffff">
+																<div class="width-80 label label-info label-xlg arrowed-in arrowed-in-right">
+																			<div class="inline position-relative">
+																					<span class="white">ST2</span>
+																			</div>
+																		</div>
+																<div class="profile-user-info profile-user-info-striped">
+																	<div class="profile-info-row">
+																		<div class="profile-info-name">ST2LeakRate </div>
+																		<div class="profile-info-value">
+																			<span><?php echo $r->ST2LeakRate ?></span>
+																		</div>
+																	</div>
+												
+																<div class="profile-info-row">
+																	<div class="profile-info-name">ST2MaxSet </div>
+																	<div class="profile-info-value">
+																		<span><?php echo $r->ST2MaxSet ?></span>
+																	</div>
+																</div>
+												
+																<div class="profile-info-row">
+																	<div class="profile-info-name">ST2MinSet </div>
+																	<div class="profile-info-value">
+																		<span><?php echo $r->ST2MinSet ?></span>
+																	</div>
+																</div>
+																<div class="profile-info-row">
+																	<div class="profile-info-name">ST2Channel </div>
+																	<div class="profile-info-value">
+																		<span><?php echo $r->ST2Channel ?></span>
+																	</div>
+																</div>
+																<div class="profile-info-row">
+																	<div class="profile-info-name">ST2Judgment </div>
+																	<div class="profile-info-value">
+																		<span><?php echo $r->ST2Judgment ?></span>
+																	</div>
+																</div>
+															</div>
+												
+														</td>
+														<td class="center" style="background-color:#ffffff">
+																<div class="width-80 label label-info label-xlg arrowed-in arrowed-in-right">
+																			<div class="inline position-relative">
+																					<span class="white">ST3</span>
+																			</div>
+																		</div>
+																<div class="profile-user-info profile-user-info-striped">
+																	<div class="profile-info-row">
+																		<div class="profile-info-name">ST3LeakRate </div>
+																		<div class="profile-info-value">
+																			<span><?php echo $r->ST3LeakRate ?></span>
+																		</div>
+																	</div>
+												
+																<div class="profile-info-row">
+																	<div class="profile-info-name">ST3MaxSet </div>
+																	<div class="profile-info-value">
+																		<span><?php echo $r->ST3MaxSet ?></span>
+																	</div>
+																</div>
+												
+																<div class="profile-info-row">
+																	<div class="profile-info-name">ST3MinSet </div>
+																	<div class="profile-info-value">
+																		<span><?php echo $r->ST3MinSet ?></span>
+																	</div>
+																</div>
+																<div class="profile-info-row">
+																	<div class="profile-info-name">ST3Channel </div>
+																	<div class="profile-info-value">
+																		<span><?php echo $r->ST3Channel ?></span>
+																	</div>
+																</div>
+																<div class="profile-info-row">
+																	<div class="profile-info-name">ST3MarkCode </div>
+																	<div class="profile-info-value">
+																		<span><?php echo $r->ST3MarkCode ?></span>
+																	</div>
+																</div>
+																<div class="profile-info-row">
+																	<div class="profile-info-name">ST3Judgment </div>
+																	<div class="profile-info-value">
+																		<span><?php echo $r->ST3Judgment ?></span>
+																	</div>
+																</div>
+															</div>
+												
+														</td>
+													
+														<td style="border:none;"></td>
+														<td style="border:none;"></td>
+														<td style="border:none;"></td>
+														<td style="border:none;"></td>
+														<td style="border:none;"></td>
+														</div>
+													
+												</tr>
+												<?php
+											} 
+												} ?>
 											</tbody>
 
 										</table>

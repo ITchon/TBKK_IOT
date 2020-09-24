@@ -21,7 +21,6 @@
 						<div class="row">
 						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
-		
 								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 									<?php if ($this->session->flashdata('msgResponse') != ''){ echo $this->session->flashdata('msgResponse'); } ?>
 								</div>
@@ -39,14 +38,6 @@
 									<!-- widget content -->
 									<div class="widget-body no-padding">
 
-			
-							<div class="row">
-							<div class="col-xs-12">
-								<!-- PAGE CONTENT BEGINS -->
-								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-										<?php if ($this->session->flashdata('msgResponse') != ''){ echo $this->session->flashdata('msgResponse'); } ?>
-									</div>
-									
 
 									<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
 									
@@ -60,19 +51,9 @@
 															</small> -->
 														</h1>
 													</div>
-										
 
 											<!-- widget div-->
-											<div>
-							
-												<!-- widget edit box -->
-												<div class="jarviswidget-editbox">
-													<!-- This area used as dropdown edit box -->
-													
-												</div>
-												<!-- end widget edit box -->
-
-
+										
 														<!-- widget content -->
 										<div class="widget-body no-padding">
 															

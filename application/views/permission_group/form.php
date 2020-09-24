@@ -138,21 +138,19 @@
 										<?php echo form_close();  
 										} 
 										?>
-											    	</div>
+											    	<!-- </div>
 												 </div>
 											  </div>
 									  	  </div>
 									  	</div>
-										<!-- end widget div -->
 						      		</div>
-							      </div>
-								<!-- PAGE CONTENT ENDS -->
-							</div><!-- /.col -->
-						</div><!-- /.row -->
-					</div><!-- /.page-content -->
+							    </div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
-		</div><!-- /.main-content -->
+		</div> -->
 		<script>
 			$(document).on('click', '.edit_form', function() {
 				var id = $(this).val();
