@@ -11,7 +11,9 @@ class Dashboard extends CI_Controller {
         $this->load->model('model');
 		$this->model->load_menu();
 	}
-	public function home(){
-        $this->load->view('dashboard');
+	public function manage(){
+        $this->load->view('welcome_message');
 	}
 }
+
+

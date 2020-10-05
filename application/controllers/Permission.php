@@ -30,9 +30,9 @@ class Permission extends CI_Controller {
         $query = $this->db->query($sql);
         $data['excLoadG'] = $query->result(); 
         $this->load->view('permission/manage',$data);//bring $data 
-        if($this->uri->segment('3')!=null){
+        if($this->uri->segment('3')!=null){//   ----------------   EDIT  -------------        //
         $id = $this->uri->segment('3');
-        $sql = "SELECT sp.sp_id, sp.name as sp_name, spg.spg_id, spg.name as spg_name, sp.controller from sys_permissions as sp
+        $sql = "SELECT sp.sp_id, sp.name as sp_name, spg.spg_id, spg.name as spg_name, sp.controller ,sp.enable from sys_permissions as sp
         inner join sys_permission_groups as spg on spg.spg_id = sp.spg_id
         where sp.sp_id = $id ";
         $query = $this->db->query($sql); 
@@ -41,7 +41,7 @@ class Permission extends CI_Controller {
         $sql = "SELECT * from sys_permission_groups where delete_flag !=0 AND spg_id != $group  and enable != 0";
         $query = $this->db->query($sql); 
         $data['result_g'] = $query->result(); 
-        }
+        }                               //  ------------------------------------------   //
 		$this->load->view('permission/form',$data);
 		$this->load->view('script');
     }
@@ -58,7 +58,7 @@ class Permission extends CI_Controller {
         redirect('permission/manage');
     }
 
-    public function deletepermission()
+    public function delete()
     {
         $this->model->CheckPermissionGroup($this->session->userdata('sug_id'));   
         $this->model->CheckPermission($this->session->userdata('su_id'));

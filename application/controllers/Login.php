@@ -54,7 +54,7 @@ class Login extends CI_Controller {
 				<strong>Error!</strong><br />แอคเคาท์นี้ถูกระงับ<br />Account is baned.</div>');
                 redirect('login'); 
              } else{
-                redirect('dashboard/home');
+                redirect('dashboard/manage');
              }
         }
      else{

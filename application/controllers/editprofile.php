@@ -24,15 +24,13 @@ class editprofile extends CI_Controller {
     public function manage()
     {	
         $su_id =  $this->session->userdata('su_id');
-        $sql='SELECT * FROM sys_users  INNER JOIN sys_user_groups ON sys_users.sug_id=sys_user_groups.sug_id
-        where su_id = '.$su_id.'';
+        $sql="SELECT * FROM sys_users  INNER JOIN sys_user_groups ON sys_users.sug_id=sys_user_groups.sug_id
+        where su_id = $su_id";
         //$sql =  'SELECT * FROM sys_users ';
         $query = $this->db->query($sql); 
         $data['result'] = $query->result(); 
 
         $gender = $data['result'][0]->gender;
-
-
         $g = $data['result'][0]->sug_id;
 
 
@@ -41,26 +39,34 @@ class editprofile extends CI_Controller {
         $data['excLoadG'] = $query->result(); 
 
 
-       $id = $this->uri->segment('3'); 
+        $id = $this->uri->segment('3'); 
       
         //$data['result'] = $this->main_model->selectOne();
 
-        $this->load->view('editprofile/manage',$data);
-        $this->load->view('footer');
+        $this->load->view('editprofile',$data);
+
 
     }
 
     public function updated_profile()
     {
         $su_id =  $this->session->userdata('su_id');
+        $username =  $this->input->post('username');
         $fname =  $this->input->post('fname');
         $lname  =  $this->input->post('lname');
         $gender =  $this->input->post('gender');
         $email  =  $this->input->post('email');
-
-        $result = $this->model->updated_profile_data($fname,$lname,$gender,$email,$su_id);
+        $data = array(
+            'su_id' =>$su_id ,
+            'username' =>$username ,
+            'fname' =>$fname ,
+            'lname' =>$lname ,
+            'gender' =>$gender ,
+            'email' =>$email 
+        );
+        $result = $this->model->updated_profile_data($data);
         $this->session->set_flashdata('success','<div class="alert text-center alert-success hide-it">  
-        <span> Success</span>
+        <span> Update Data Success</span>
       </div> ');
        redirect('editprofile/manage');
     }

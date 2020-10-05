@@ -2,12 +2,12 @@
 
 class Model_usergroup extends CI_Model
 {
-    function insert_group($gname)
+    function insert_group($gname,$status)
     {
      $num= $this->db->query("SELECT * FROM sys_user_groups where name = '$gname'"); 
      $chk= $num->num_rows();
     if($chk!=1){
-     $sql ="INSERT INTO sys_user_groups (name,enable,date_created,delete_flag) VALUES ( '$gname', '1', CURRENT_TIMESTAMP,  '1' );";
+     $sql ="INSERT INTO sys_user_groups (name,enable,date_created,delete_flag) VALUES ( '$gname', '$status', CURRENT_TIMESTAMP,  '1' );";
        $query = $this->db->query($sql);  
       if($query){
         return true;
@@ -45,9 +45,9 @@ class Model_usergroup extends CI_Model
         
       } 
 
-      public function save_edit_ug($sug_id, $sug_name)
+      public function save_edit_ug($sug_id, $sug_name,$status)
       {
-         $sql1 ="UPDATE sys_user_groups SET name = '$sug_name', date_updated = CURRENT_TIMESTAMP WHERE sug_id = '$sug_id'";
+         $sql1 ="UPDATE sys_user_groups SET name = '$sug_name', enable='$status', date_updated = CURRENT_TIMESTAMP WHERE sug_id = '$sug_id'";
         $exc_user = $this->db->query($sql1);
         if ($exc_user ){ return true; }else{ return false; }
       }

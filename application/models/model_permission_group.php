@@ -24,7 +24,16 @@ class Model_permission_group extends CI_Model
           return FALSE; 
         }
       }
-
+      public function delete_permissiongroup($id) {
+        $sql ="UPDATE sys_permission_groups SET delete_flag = '0' , date_deleted=CURRENT_TIMESTAMP WHERE spg_id = '$id'";
+        $query = $this->db->query($sql);
+           if ($query) { 
+              return true; 
+           } 
+          else{
+          return false;  
+        }
+        }
       public function save_edit_pg($spg_id, $spg_name,$status)
         {
           $sql1 ="UPDATE sys_permission_groups SET name = '$spg_name',enable = '$status', date_updated = CURRENT_TIMESTAMP WHERE spg_id = '$spg_id'";

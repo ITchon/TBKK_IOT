@@ -124,7 +124,7 @@
     											    <td class="text-center"><span style="color:'.$txt_color.'">'.strtoupper($txt_status).'</span></td>
     											    <td  class="text-center">'. date('Y-m-d H:i:s', strtotime($r->date_created)).'</td>
 													<td>
-													<div class="hidden-sm hidden-xs btn-group">
+													<div class="">
 															<button  type="button" value='.$r->su_id.' class="btn btn-xs '.$btn_color.' enable">
 																<i class="ace-icon '.$icon.' bigger-120"></i>
 															</button>

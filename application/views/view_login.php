@@ -15,7 +15,7 @@
 								<h1>
 									<!-- <i class="ace-icon fa fa-leaf green"></i> -->
 								
-									<span class="blue" id="id-text2">INTERNET OF THONGS</span>
+									<span class="blue" id="id-text2">INTERNET OF THINGS</span>
 								</h1>
 
 								<h4 class="blue" id="id-company-text">&copy; TBKK</h4>

@@ -21,15 +21,10 @@
 						<div class="row">
 							<div class="col-xs-12">
 								<div class="row" style="margin: 0px;padding: 0px;">
-									<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
-										
-									</div>
-									<div class="col-xs-12 col-sm-5 col-md-5 col-lg-8">
-										
-									</div>
+
 								</div>
 
-								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+								<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
 									<?php if ($this->session->flashdata('msgResponse') != ''){ echo $this->session->flashdata('msgResponse'); } ?>
 								</div>
 
@@ -58,7 +53,7 @@
 					              
 										
 					           		<div class="row">
-									<div class="col-xs-6">
+									<div class="col-xs-12 col-sm-6">
 								
 										<div class="clearfix">
 											<div class="pull-right tableTools-container"></div>

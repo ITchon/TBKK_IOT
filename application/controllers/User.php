@@ -24,7 +24,6 @@ class User extends CI_Controller {
         $data['data'] =  $this->model_user->get_user(); 
         $this->load->view('user/manage',$data);
         $this->load->view('user/rule_user');
-
         $this->load->view('script');
         
     }
@@ -137,13 +136,13 @@ class User extends CI_Controller {
  
     }
 
-    public function edit_u()
+    public function edit()
     {
         $this->model->CheckPermission($this->session->userdata('su_id'));
         $this->model->CheckPermissionGroup($this->session->userdata('sug_id'));
 
-        $decrypted_id = $this->uri->segment('3');
-        $id = base64_decode($decrypted_id);
+        $id = $this->uri->segment('3');
+        // $id = base64_decode($decrypted_id);
         $sql="SELECT * FROM sys_users  INNER JOIN sys_user_groups ON sys_users.sug_id=sys_user_groups.sug_id where su_id = '$id';";
         //$sql =  'SELECT * FROM sys_users ';
         $query = $this->db->query($sql); 
@@ -164,7 +163,7 @@ class User extends CI_Controller {
         $data['excLoadG'] = $query->result(); 
 
         $this->load->view('user/edit',$data);
-        $this->load->view('footer');
+
   
 
 
@@ -172,16 +171,18 @@ class User extends CI_Controller {
 
     public function save_edit()
     {
-        $su_id =  $this->input->post('su_id');
-        $username =  $this->input->post('username');
-        $password =  $this->input->post('password');
-        $gender =  $this->input->post('gender');
-        $fname =  $this->input->post('fname');
-        $lname =  $this->input->post('lname');
-        $email =  $this->input->post('email');
-        $sug_id =  $this->input->post('sug_id');
+        $data = array(
+            'su_id' =>    $this->input->post('su_id');
+            'username' => $this->input->post('username');
+            'password' => $this->input->post('password');
+            'gender' =>   $this->input->post('gender');
+            'fname' =>    $this->input->post('fname');
+            'lname' =>    $this->input->post('lname');
+            'email' =>    $this->input->post('email');
+            'sug_id' =>   $this->input->post('sug_id');
+        );
 
-        $this->model_user->save_edit_u($su_id, $username, $password,$gender, $fname, $lname, $email, $sug_id);
+        $this->model_user->save_edit_u($data);
         redirect('User/manage');
     }
 

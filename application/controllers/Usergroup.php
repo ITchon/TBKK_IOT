@@ -24,7 +24,7 @@ class Usergroup extends CI_Controller {
     {	
         $this->model->CheckPermission($this->session->userdata('su_id'));
          $this->model->CheckPermissionGroup($this->session->userdata('sug_id'));
-        $sql =  'SELECT * FROM sys_user_groups ';
+        $sql =  'SELECT * FROM sys_user_groups WHERE delete_flag != 0 ';
         $query = $this->db->query($sql); 
         $data['result'] = $query->result();
         $this->load->view('user_group/manage',$data); 
@@ -44,21 +44,13 @@ class Usergroup extends CI_Controller {
     }
 
 
-    public function add()
-    {   
-        //$this->model->CheckPermission($this->session->userdata('su_id'));
-
-        $this->load->view('user_group/add'); 
-        $this->load->view('footer');
-    }
-
-
     public function insert()
     {
         $this->model->CheckPermission($this->session->userdata('su_id'));
          $this->model->CheckPermissionGroup($this->session->userdata('sug_id'));
         $gname =  $this->input->post('gname');
-        $result = $this->model_usergroup->insert_group($gname);
+        $rad_status =  $this->input->post('rad_status');
+        $result = $this->model_usergroup->insert_group($gname,$rad_status);
        if($result == true){
         redirect('usergroup/manage','refresh');
        }
@@ -89,24 +81,9 @@ class Usergroup extends CI_Controller {
         }
     }
 
-    public function disable($uid){
 
-        $this->model->CheckPermission($this->session->userdata('su_id'));
-         $this->model->CheckPermissionGroup($this->session->userdata('sug_id'));
-        $result = $this->model_usergroup->disableGroup($uid);
 
-        if($result!=FALSE){
-            redirect('Usergroup/manage','refresh');
-            
-
-        }else{
-            echo "<script>alert('Simting wrong')</script>";
-            redirect('Usergroup/manage','refresh');
-
-        }
-    }
-
-    public function deletegroup()
+    public function delete()
     {
         $this->model->CheckPermission($this->session->userdata('su_id'));
          $this->model->CheckPermissionGroup($this->session->userdata('sug_id'));
@@ -131,28 +108,16 @@ class Usergroup extends CI_Controller {
  
     }
 
-    public function edit_ug()
-    {
-        $this->model->CheckPermission($this->session->userdata('su_id'));
-         $this->model->CheckPermissionGroup($this->session->userdata('sug_id'));
-        $id = $this->uri->segment('3');
-        $sql =  "SELECT sug.sug_id, sug.name as sug_name from sys_user_groups as sug
-          where sug.sug_id = $id";
 
-        $query = $this->db->query($sql); 
-        $data['result'] = $query->result(); 
-
-        $this->load->view('user_group/edit',$data);
-        $this->load->view('footer');
-  
-    }
 
     public function save_edit()
     {
         $sug_id =  $this->input->post('sug_id');
         $sug_name =  $this->input->post('sug_name');
+        $rad_status =  $this->input->post('rad_status');
+    
 
-        $this->model_usergroup->save_edit_ug($sug_id, $sug_name);
+        $this->model_usergroup->save_edit_ug($sug_id, $sug_name,$rad_status);
         redirect('Usergroup/manage');
     }
 

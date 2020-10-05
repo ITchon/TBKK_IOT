@@ -86,11 +86,11 @@
 										} else{ echo form_open('permissiongroup/save_edit', array('id'=>'smart-form-register', 'class'=>'form-horizontal'));
 											$r1 = "";
 											$r2 = "";
-											if($res_edit->enable == 1){
+											if($res_edit[0]->enable == 1):
 											 $r1 = "checked";
-											}else{
+											else:
 											 $r2 = "checked";
-											}
+											endif;
 										?>
 									<div class="row">
 										<div class="col-xs-12">

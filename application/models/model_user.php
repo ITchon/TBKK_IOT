@@ -18,7 +18,7 @@ class Model_user extends CI_Model
       public function addUser($p){
 
 
-        $sqlIns = "INSERT INTO sys_users (sug_id, username, password, firstname, lastname, gender, email, enable, date_created, date_updated) VALUES ( '{$p['group']}', '{$p['usr']}', '{$p['pwd']}', '{$p['fname']}', '{$p['lname']}', '{$p['sex']}', '{$p['email']}', '1', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP );";
+        $sqlIns = "INSERT INTO sys_users (sug_id, username, password, firstname, lastname, gender, email, enable, date_created, date_updated,delete_flag) VALUES ( '{$p['group']}', '{$p['usr']}', '{$p['pwd']}', '{$p['fname']}', '{$p['lname']}', '{$p['sex']}', '{$p['email']}', '1', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,1 );";
         $excIns = $this->db->query($sqlIns);
     
         $sqlSel = "SELECT MAX(su_id) AS su_id FROM sys_users ;";
@@ -26,8 +26,8 @@ class Model_user extends CI_Model
         $get_id = $query->result_array();
           
         $lastId = $get_id[0]['su_id'];
-                
-        ## User Permission 
+                 
+        ## User Permission // with controller like  manage  only
         $sqlSelPerm = "SELECT
           sp.sp_id,
           sp.name
@@ -35,7 +35,7 @@ class Model_user extends CI_Model
           sys_users_groups_permissions AS sugp
           LEFT JOIN sys_permission_groups AS spg ON spg.spg_id = sugp.spg_id
           LEFT JOIN sys_permissions AS sp ON sp.spg_id = spg.spg_id
-          WHERE spg.enable='1' AND sp.enable='1' AND sugp.sug_id='{$p['group']}';";
+          WHERE spg.enable='1' AND sp.enable='1'  AND sp.controller like '%manage%' AND sugp.sug_id='{$p['group']}';";
         $excSelPerm = $this->db->query($sqlSelPerm);
         
         foreach($excSelPerm->result() AS $p){
@@ -60,7 +60,7 @@ class Model_user extends CI_Model
      
       if($chk==null){
          $sql1 ="INSERT INTO sys_users (sug_id, username, password, firstname, lastname, gender, email, enable, date_created, date_updated,delete_flag) VALUES ( '$sug_id', '$username', '$password', '$fname', '$lname', '$gender', '$email', '1', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, '1' )";
-       $query= $this->db->query($sql1); 
+         $query= $this->db->query($sql1); 
        if($query){
            return true;
         }else{
@@ -72,7 +72,7 @@ class Model_user extends CI_Model
 
       public function enableUser($key){
         $query = $this->db->query("SELECT * from sys_users WHERE su_id = $key "); 
-        $result = $query->result()[0];
+        $result[0] = $query->result();
         if( $result->enable==0){
         $sqlEdt = "UPDATE sys_users SET enable='1' , date_updated=CURRENT_TIMESTAMP WHERE su_id={$key};";
         $exc_user = $this->db->query($sqlEdt);
@@ -94,7 +94,7 @@ class Model_user extends CI_Model
    
         if ($key){
           $query = $this->db->query("SELECT * from sys_users WHERE su_id = $key "); 
-          $result = $query->result()[0];
+          $result[0]= $query->result();
           if( $result->mobile==0 ){
           $sqlEdt = "UPDATE sys_users SET mobile='1' , date_updated=CURRENT_TIMESTAMP WHERE su_id={$key};";
           $exc_user = $this->db->query($sqlEdt);
@@ -145,11 +145,11 @@ class Model_user extends CI_Model
           }
         }  
 
-        public function save_edit_u($su_id, $username, $password,$gender, $fname, $lname, $email, $sug_id)
+        public function save_edit_u($data)
         {
-          $password = base64_encode(trim($password));
-           $sql ="UPDATE sys_users SET sug_id = '$sug_id', username = '$username', password = '$password', firstname = '$fname', lastname = '$lname',
-            gender = '$gender', email = '$email', date_updated = CURRENT_TIMESTAMP WHERE su_id = '$su_id'";
+          $password = base64_encode(trim($data['password']));
+           $sql ="UPDATE sys_users SET sug_id = '$data[sug_id]', username = '$data[username]', password = '$password', firstname = '$data[fname]', lastname = '$data[lname]',
+            gender = '$data[gender]', email = '$data[email]', date_updated = CURRENT_TIMESTAMP WHERE su_id = '$data[su_id]'";
           $exc_user = $this->db->query($sql);
           if ($exc_user ){ return true; }else{ return false; }
         }
@@ -189,9 +189,9 @@ class Model_user extends CI_Model
           }
         }
 
-        public function save_edit_ug($sug_id, $sug_name)
+        public function save_edit_ug($sug_id, $sug_name,$status)
         {
-           $sql1 ="UPDATE sys_user_groups SET name = '$sug_name', date_updated = CURRENT_TIMESTAMP WHERE sug_id = '$sug_id'";
+           $sql1 ="UPDATE sys_user_groups SET name = '$sug_name', enable = '$status' date_updated = CURRENT_TIMESTAMP WHERE sug_id = '$sug_id'";
           $exc_user = $this->db->query($sql1);
           if ($exc_user ){ return true; }else{ return false; }
         }                           

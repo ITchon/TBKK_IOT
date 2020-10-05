@@ -101,7 +101,14 @@
 														<?php 
 														echo form_close(); 
 														}else{
-														echo form_open('permission/', array('id'=>'smart-form-register', 'class'=>'form-horizontal'));
+														echo form_open('permission/save_edit', array('id'=>'smart-form-register', 'class'=>'form-horizontal'));
+														$r1 = "";
+														$r2 = "";
+														if($result[0]->enable == 1):
+														 $r1 = "checked";
+														else:
+														 $r2 = "checked";
+														endif;
 														?>
 														<div class="row">
 															<div class="col-xs-12">
@@ -154,11 +161,11 @@
 																			<div class="radio">
 																			Status
 																				<label>
-																					<input checked="checked" type="radio" name="rad_status" value="1" <?php echo set_radio('rad_status', '1', TRUE); ?> class="ace" />
+																					<input  <?php echo $r1 ?> type="radio" name="rad_status" value="1" <?php echo set_radio('rad_status', '1', TRUE); ?> class="ace" />
 																					<span class="lbl"> Enable </span>
 																				</label>
 																				<label>
-																					<input type="radio" name="rad_status" value="0" <?php echo set_radio('rad_status', '0'); ?> class="ace" />
+																					<input  <?php echo $r2 ?> type="radio" name="rad_status" value="0" <?php echo set_radio('rad_status', '0'); ?> class="ace" />
 																					<span class="lbl"> Disable </span>
 																				</label>
 																			</div>

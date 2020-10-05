@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class changepassword extends CI_Controller {
+class changepass extends CI_Controller {
 
     function __construct() { 
     
@@ -22,7 +22,7 @@ class changepassword extends CI_Controller {
 
     }
 
-    public function account()
+    public function manage()
     {	
         $su_id =  $this->session->userdata('su_id');
         $this->model->CheckSession();
@@ -31,8 +31,8 @@ class changepassword extends CI_Controller {
         $query = $this->db->query($sql); 
         $data['result'] = $query->result(); 
 
-        $this->load->view('changepassword/acount',$data);
-        $this->load->view('footer');
+        $this->load->view('changepassword',$data);
+
 
     }
 
@@ -41,9 +41,9 @@ class changepassword extends CI_Controller {
 
             
             $this->model->CheckSession();
-            $cur_password=$this->input->post('cur_password');
-            $new_password=$this->input->post('new_password');
-            $con_password=$this->input->post('con_password');
+            $cur_password=$this->input->post('txt_oldpwd');
+            $new_password=$this->input->post('txt_newpwd');
+            $con_password=$this->input->post('txt_cfpwd');
             $session_id  =$this->session->userdata('su_id');
             $session_pass=$this->session->userdata('password');
 
@@ -57,7 +57,7 @@ class changepassword extends CI_Controller {
                     $this->session->set_flashdata('error','<div class="alert alert-danger hide-it">  
           <span>  <b> Error - </b> รหัสของคุณไม่ตรงกัน - กรุณาลองไหม่</span>
         </div> ');
-            redirect('changepassword/account');
+            redirect('login/index');
                 }
             
 

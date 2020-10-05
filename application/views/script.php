@@ -5,6 +5,11 @@
 		var id = $(this).val();
         window.location.href = "<?php echo base_url().$this->uri->segment("1")?>/enable/"+id;
     });
+   
+    $(document).on('click', '.edit', function() {
+		var id = $(this).val();
+        window.location.href = "<?php echo base_url().$this->uri->segment("1")?>/edit/"+id;
+    });
 
 
     $(document).on('click', '.delete', function() {

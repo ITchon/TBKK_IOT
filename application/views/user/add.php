@@ -28,7 +28,7 @@
 								<!-- PAGE CONTENT BEGINS -->
 								<div class="jarviswidget" id="wid-id-4" data-widget-editbutton="false" data-widget-custombutton="false">
 
-                <?php echo form_open('user/insert', array('id'=>'smart-form-register', 'class'=>'form-horizontal'));?>	
+             		   <?php echo form_open('user/insert', array('id'=>'smart-form-register', 'class'=>'form-horizontal'));?>	
 									<div class="row">
 									<div class="col-xs-12">
 										<form class="form-horizontal hide" id="validation-form" method="get">
@@ -38,7 +38,7 @@
 												<!-- <div class="col-sm-9 "> -->
 														<div class="col-xs-10 col-sm-6">
 																	<span class="block input-icon input-icon-right">
-																		<input type="text" name="txt_usr" placeholder="Username" value="<?php echo set_value('txt_usr'); ?>" class="width-100" autofocus/>
+																		<input type="text" name="txt_usr" placeholder="Username" value="" class="width-100" autofocus required/>
 																		<i class="ace-icon fa fa-user"></i>
 																	</span>
 																</div>
@@ -50,7 +50,7 @@
 
 												<div class="col-xs-10 col-sm-6">
 													<span class="block input-icon input-icon-right">
-																		<input type="password" name="txt_pwd" placeholder="Password" id="password" value="<?php echo set_value('txt_pwd'); ?>" class="width-100" />
+																		<input type="password" name="txt_pwd" placeholder="Password" id="password" value="" class="width-100" required />
 																		<i class="ace-icon fa fa-lock"></i>
 																	</span>
 												
@@ -65,23 +65,13 @@
 													<!-- <span class="help-inline col-xs-12 col-sm-9"> -->
 													<label class="select">
 													
-													<?php
-                                                            
+														<?php 
 								                        $optName = array();
-								                        $optName['0'] = '-- Please Select Groups --';
-								                        
 								                        foreach($excLoadG as $g){
-								                            
 								                            $optName[$g->sug_id] = $g->name;
-								                            
-								                            
-								                        }
-								                    
-								                        $selected = (set_value('sel_group')) ? set_value('sel_group') : '-- Please Select Groups --';
-								                    
-								                        echo form_dropdown('sel_group', $optName,  $selected);
-
-
+														}
+														$selected = "3";
+								                        echo form_dropdown('sel_group', $optName ,$selected );
 								                        ?>
 
 						                            <i></i>
@@ -97,7 +87,7 @@
 
 												<div class="col-xs-10 col-sm-6">
 													<span class="block input-icon input-icon-right">
-																		<input type="text" name="txt_fname" placeholder="First name" value="<?php echo set_value('txt_fname'); ?>" class="width-100" />
+																		<input type="text" name="txt_fname" placeholder="First name" value="" class="width-100" required/>
 																		<!-- <i class="ace-icon fa fa-lock"></i> -->
 																	</span>
 												
@@ -110,7 +100,7 @@
 
 												<div class="col-xs-10 col-sm-6">
 													<span class="block input-icon input-icon-right">
-																		<input type="text" name="txt_lname" placeholder="Last name" value="<?php echo set_value('txt_lname'); ?>" class="width-100" />
+																		<input type="text" name="txt_lname" placeholder="Last name" value="" class="width-100" required />
 																		<!-- <i class="ace-icon fa fa-lock"></i> -->
 																	</span>
 													

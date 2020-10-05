@@ -1,103 +1,189 @@
-<div class="layout-content">
-        <div class="layout-content-body">
-          <div class="title-bar">
-       
-                 <?php echo $this->session->flashdata("gg"); ?>
-          </div>
-          <div class="row">
-            <div class="col-md-12">
-              <div class="demo-form-wrapper card" style="padding-top:8px;">
-            <h2 class=" text-center text-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-            EDIT USER
-            </h2><hr>
-            <form class="table form form-horizontal container" action="<?php echo base_url()?>user/save_edit" method="post" data-toggle="validator">
-            
-                <input type="text" name="su_id" value="<?php echo $result[0]->su_id ?>" hidden>
-                <div class="form-group has-feedback">
-                    <label for="username" class="col-sm-3 col-md-4 control-label">Username</label>
-                    <div class="col-sm-6 col-md-4">
-                    <input id="username" class="form-control" type="text" autocomplete="off" name="username" value="<?php echo $result[0]->username?>">
-                    <span class="form-control-feedback" aria-hidden="true">
-                    <span class="icon"></span>
-                    </span>
-                    </div>
-                </div>
-                <div class="form-group has-feedback">
-                    <label for="password" class="col-sm-3 col-md-4 control-label">Password</label>
-                    <div class="col-sm-6 col-md-4">
-                    <input id="password" class="form-control" type="text" autocomplete="off" name="password" value="<?php echo base64_decode(trim($result[0]->password));?>">
-                    <span class="form-control-feedback" aria-hidden="true">
-                    <span class="icon"></span>
-                    </span>
-                    </div>
-                </div>
-    
-                  <div class="form-group">
-                      <label for="email-2" class="col-sm-3 col-md-4 control-label">Select</label>      
-                      <div class="col-sm-6 col-md-3">
-                   <select id="select" name="gender" class="form-control select2" required >
-                      <option value="male">Male</option>
-                      <option value="female">Female</option>
-                      <option value="etc">Etc</option>
-                   </select>
-                    </div>
-                    </div>
-              
-                    <div class="form-group has-feedback">
-                    <label for="password" class="col-sm-3 col-md-4 control-label">Firstname</label>
-                    <div class="col-sm-6 col-md-4">
-                    <input id="firstname" class="form-control" type="text" autocomplete="off" name="fname"  value="<?php echo $result[0]->firstname?>">
-                    <span class="form-control-feedback" aria-hidden="true">
-                    <span class="icon"></span>
-                    </span>
-                    </div>
-                </div>
-                    <div class="form-group has-feedback">
-                    <label for="Lastname" class="col-sm-3 col-md-4 control-label">Lastname</label>
-                    <div class="col-sm-6 col-md-4">
-                    <input id="Lastname" class="form-control" type="text" autocomplete="off" name="lname"  value="<?php echo $result[0]->lastname?>">
-                    <span class="form-control-feedback" aria-hidden="true">
-                    <span class="icon"></span>
-                    </span>
-                    </div>
-                </div>
-                    <div class="form-group has-feedback">
-                    <label for="Email" class="col-sm-3 col-md-4 control-label">Email</label>
-                    <div class="col-sm-6 col-md-4">
-                    <input id="Email" class="form-control" type="email" autocomplete="off" name="email"  value="<?php echo $result[0]->email?>">
-                    <span class="form-control-feedback" aria-hidden="true">
-                    <span class="icon"></span>
-                    </span>
-                    </div>
-                </div>
+<div class="main-content">
+				<div class="main-content-inner">
+					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+						<ul class="breadcrumb">
+							<li>
+								<i class="ace-icon fa fa-user user-icon"></i>
+								<a href="#"><?php echo ucfirst($this->uri->segment('1')) ?></a>
+							</li>
+							<li class="active"><?php echo ucfirst($this->uri->segment('2')) ?></li>
+						</ul><!-- /.breadcrumb -->
+					</div>
 
-                <div class="form-group">
-                      <label for="email-2" class="col-sm-3 col-md-4 control-label">Select Group</label>      
-          
-                      <div class="col-sm-6 col-md-3">
-                   <select name="sug_id" class="form-control select2"  required>
-                   <option value="<?php echo $result[0]->sug_id ?>"><?php echo $result[0]->name ?></option>
+					<div class="page-content">
+
+						<div class="page-header text-center">
+							<h1>
+							<?php 
+							echo ucfirst($this->uri->segment('2')."  ");
+							echo ucfirst($this->uri->segment('1'));
+							 ?>
+							
+							</h1>
+						</div><!-- /.page-header -->
+
+						<div class="row">
+						<div class="col-xs-2"></div>
+							<div class="col-xs-8">
+								<!-- PAGE CONTENT BEGINS -->
+								<div class="jarviswidget" id="wid-id-4" data-widget-editbutton="false" data-widget-custombutton="false">
+
+             		   <?php echo form_open('user/save_edit', array('id'=>'smart-form-register', 'class'=>'form-horizontal'));?>	
+									<div class="row">
+									<div class="col-xs-12">
+										<form class="form-horizontal hide" id="validation-form" method="get">
+											<div class="form-group">
+												<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Username </label>
+
+												<!-- <div class="col-sm-9 "> -->
+														<div class="col-xs-10 col-sm-6">
+																	<span class="block input-icon input-icon-right">
+																		<input name="su_id" value="<?php echo $result[0]->su_id?>" hidden />
+																		<input type="text" name="username" placeholder="Username" value="<?php echo $result[0]->username?>" class="width-100" autofocus required/>
+																		<i class="ace-icon fa fa-user"></i>
+																	</span>
+																</div>
+												<!-- </div> -->
+											</div>
+
+											<div class="form-group">
+												<label class="col-sm-3 control-label no-padding-right" for="form-field-2"> Password </label>
+
+												<div class="col-xs-10 col-sm-6">
+													<span class="block input-icon input-icon-right">
+																		<input type="password" name="password" placeholder="Password" id="password" value="<?php echo base64_decode(trim($result[0]->password));?>" class="width-100" required />
+																		<i class="ace-icon fa fa-lock"></i>
+																	</span>
+												
+												</div>
+											</div>
+
+											<div class="form-group">
+												<label class="col-sm-3 control-label no-padding-right" for="form-field-2"> Group </label>
+
+												<div class="col-sm-9">
+
+													<!-- <span class="help-inline col-xs-12 col-sm-9"> -->
+                            
+													<label class="select">
+                          <select name="sug_id" class="form-control select2"  required>
+                     <option value="<?php echo $result[0]->sug_id ?>"><?php echo $result[0]->name ?></option>
                     <?php foreach ($excLoadG as $r) {
                         ?>
                        <option value="<?php echo $r->sug_id ?>"><?php echo $r->name ?></option>
                   <?php
                    } ?>
                    </select>
-                    </div>
-                    </div>
+												 </label>
+														<!-- </span> -->
+												
+												</div>
 
-            
-                  
-              </div>
-              <div class="form-group">
-                    <button type="submit" id="btn" class="btn btn-primary btn-block">Save Changes</button>
-                  </div>
-                </form>
-            </div>
-          </div>
-         
-        </div>
-      </div>
+											</div>
+
+											<div class="form-group">
+												<label class="col-sm-3 control-label no-padding-right" for="form-field-2"> Firstname </label>
+
+												<div class="col-xs-10 col-sm-6">
+													<span class="block input-icon input-icon-right">
+																		<input type="text" name="fname" placeholder="First name" value="<?php echo $result[0]->firstname?>" class="width-100" required/>
+																		<!-- <i class="ace-icon fa fa-lock"></i> -->
+																	</span>
+												
+												</div>
+											</div>
+
+
+											<div class="form-group">
+												<label class="col-sm-3 control-label no-padding-right" for="form-field-2"> Lastname </label>
+
+												<div class="col-xs-10 col-sm-6">
+													<span class="block input-icon input-icon-right">
+																		<input type="text" name="lname" placeholder="Last name" value="<?php echo $result[0]->lastname?>" class="width-100" required />
+																		<!-- <i class="ace-icon fa fa-lock"></i> -->
+																	</span>
+													
+												</div>
+											</div>
+
+
+											<div class="form-group">
+												<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Sex </label>
+
+												<div class="col-sm-9">
+                          <?php 
+                          		$rad1 = "";
+                              $rad2 = "";
+                          if($result[0]->gender == "male"){
+                              $rad1 = "checked";
+                            }
+                            else{
+                              $rad2 = "checked";
+                            }
+                          ?>
+													<div class="radio">
+														<label>
+															<input <?php echo $rad1 ?> type="radio" name="gender" value="male" <?php echo set_radio('rad_sex', 'male', TRUE); ?> class="ace" />
+															<span class="lbl"> Male </span>
+
+															
+														</label>
+
+														<label>
+															<input  <?php echo $rad2 ?> type="radio" name="gender" value="female" <?php echo set_radio('rad_sex', 'female'); ?> class="ace" />
+															<span class="lbl"> Female </span>
+
+														</label>
+													</div>
+
+												
+												</div>
+											</div>
+
+											<div class="form-group">
+																<label class="control-label col-xs-12 col-sm-3 no-padding-right" for="email">Email Address </label>
+
+																<div class="col-xs-10 col-sm-6">
+																	<div class="clearfix">
+																	<span class="block input-icon input-icon-right">
+																		<input name="email" placeholder="E-mail" type="email" value="<?php echo $result[0]->email?>" class="width-100" />
+																		<i class="ace-icon fa fa-envelope-o"></i>
+																	</span>
+													
+												
+																	</div>
+																</div>
+															</div>
+
+															<div class="clearfix form-actions">
+																<div class="center">
+
+																	<button type="submit" class="btn btn-primary">
+																	Submit
+																</button>
+																<input type="hidden" name="action" value="<?php echo base64_encode('addUser');?>"  />
+
+																	<!-- &nbsp; &nbsp; &nbsp;
+																	<button class="btn" type="reset">
+																		<i class="ace-icon fa fa-undo bigger-110"></i>
+																		Reset
+																	</button> -->
+																</div>
+															</div>
+												</form>
+											</div>
+										</div>
+									<?php echo form_close();?>
+
+
+								</div>
+								<!-- PAGE CONTENT ENDS -->
+							</div><!-- /.col -->
+						<div class="col-xs-2"></div>
+						</div><!-- /.row -->
+					</div><!-- /.page-content -->
+				</div>
+			</div><!-- /.main-content -->
 
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
             <script>
@@ -122,9 +208,4 @@
 
 
 </script> -->
-<script>
-        <?php if($result[0]->gender == null){
-        } ?>
-      document.getElementById('select').value = "<?php echo $result[0]->gender ?>";
-</script>
 

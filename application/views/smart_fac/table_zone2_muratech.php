@@ -58,18 +58,10 @@
 												<thead>
 													<tr>
 								                    	<td colspan="10">
-									                    	<div id="btn_enable" class="btn btn-sm btn-success"><span class="fa fa-check-square-o"></span></div>
-									                    	<div id="btn_disable" class="btn btn-sm btn-danger"><span class="fa fa-times"></span></div>
-									                    	<div id="btn_delete" class="btn btn-sm btn-primary"><span class="fa fa-trash-o"></span></div>
+									                
 								                    	</td>
 								                    </tr>	
 													<tr>
-														<th class="center">
-															<label class="pos-rel">
-																<input type="checkbox" class="ace" />
-																<span class="lbl"></span>
-															</label>
-														</th>
 														<th class="center">
 															Detail
 														</th>
@@ -80,7 +72,6 @@
 														<th>Serial</th>
 														<th>QRrange</th>
 														<th>QRcode</th>
-														<th>Action</th>
 													
 
 													</tr>
@@ -96,12 +87,6 @@
     											echo  
 												'<tr>
 													<td class="center">
-														<label class="pos-rel">
-															<input type="checkbox" class="ace" />
-															<span class="lbl"></span>
-														</label>
-													</td>
-													<td class="center">
 														<div class="action-buttons">
 															<a href="#" class="green bigger-140 show-details-btn" title="Show Details">
 																<i class="ace-icon fa fa-angle-double-down"></i>
@@ -116,11 +101,7 @@
 													<td>'.$r->Serial.'</td>
 													<td>'.$r->QRrange.'</td>
 													<td>'.$r->QRcode.'</td>
-												
-													    <td>
-    											    <button type="button" value='.$r->Index.' class="btn btn-xs btn-default edit_form"><i class="fa fa-pencil"></i></button>
-    											    <button type="button" value='.$r->Index.' class="btn btn-xs btn-default delete"><i class="fa fa-trash-o"></i></button>
-                            						</td>    							 
+												   							 
 												</tr>';
 												$i++;	
 									?>
@@ -133,7 +114,7 @@
 																					<span class="white">Spare</span>
 																			</div>
 																		</div>
-											
+																	
 																	<div class="profile-user-info profile-user-info-striped">
 																		<div class="profile-info-row">
 																			<div class="profile-info-name"> ID Spare 1 </div>
@@ -158,134 +139,239 @@
 																			</div>
 																		</div>
 																	</div>
+	
+																	<div class="width-80 label label-info label-xlg arrowed-in arrowed-in-right">
+																			<div class="inline position-relative">
+																					<span class="white">Text</span>
+																			</div>
+																	</div>
+											
+																	<div class="profile-user-info profile-user-info-striped">
+																		<div class="profile-info-row">
+																			<div class="profile-info-name">L_CuttingProcess</div>
+																			<div class="profile-info-value">
+																				<span><?php echo $r->L_CuttingProcess ?></span>
+																			</div>
+																		</div>
+
+																		<div class="profile-info-row">
+																			<div class="profile-info-name"> R_CuttingProcess </div>
+
+																			<div class="profile-info-value">
+																				<span><?php echo $r->R_CuttingProcess ?></span>
+																			</div>
+																		</div>
+
+																		<div class="profile-info-row">
+																			<div class="profile-info-name"> L_MainChuckWork2DNo  </div>
+
+																			<div class="profile-info-value">
+																				<span><?php echo $r->L_MainChuckWork2DNo ?></span>
+																			</div>
+																		</div>
+																		<div class="profile-info-row">
+																			<div class="profile-info-name"> R_MainChuckWork2DNo  </div>
+
+																			<div class="profile-info-value">
+																				<span><?php echo $r->R_MainChuckWork2DNo ?></span>
+																			</div>
+																		</div>
+																		<div class="profile-info-row">
+																			<div class="profile-info-name"> D_2DReaderWork2DNo  </div>
+
+																			<div class="profile-info-value">
+																				<span><?php echo $r->D_2DReaderWork2DNo ?></span>
+																			</div>
+																		</div>
+																		<div class="profile-info-row">
+																			<div class="profile-info-name"> GaugeStationWork2DNo  </div>
+
+																			<div class="profile-info-value">
+																				<span><?php echo $r->GaugeStationWork2DNo ?></span>
+																			</div>
+																		</div>
+																	</div>
+																		
+														</td>
+		
+													
+														<td class="center" style="background-color:#ffffff">
+														<div class="width-80 label label-info label-xlg arrowed-in arrowed-in-right">
+																		<div class="inline position-relative">
+																					<span class="white">LeftTool</span>
+																		</div>
+																</div>
+																<div class="profile-user-info profile-user-info-striped">
+																<?php for($i = 1;$i<=15; $i++){
+																		$text ="LeftTool".$i."Life";
+																		?>
+																		<div class="profile-info-row">
+																			<div class="profile-info-name"><?php echo $text ?> </div>
+																			<div class="profile-info-value">
+																				<span><?php echo $r->$text ?></span>
+																			</div>
+																		</div>
+																	<?php
+																		
+																	 } 
+																 ?>
+																<div class="profile-info-row">
+																	<div class="profile-info-name">LeftToolMonitorXPeak </div>
+																	<div class="profile-info-value">
+																		<span><?php echo $r->LeftToolMonitorXPeak ?></span>
+																	</div>
+																</div>
+																<div class="profile-info-row">
+																	<div class="profile-info-name">LeftToolMonitorYPeak </div>
+																	<div class="profile-info-value">
+																		<span><?php echo $r->LeftToolMonitorYPeak ?></span>
+																	</div>
+																</div>
+															</div>
+																<div class="width-80 label label-info label-xlg arrowed-in arrowed-in-right">
+																			<div class="inline position-relative">
+																					<span class="white">RightTool</span>
+																			</div>
+																</div>
+																<div class="profile-user-info profile-user-info-striped">
+																	<?php for($i = 1;$i<=15; $i++){
+																		$text ="RightTool".$i."Life";
+																		?>
+																		<div class="profile-info-row">
+																			<div class="profile-info-name"><?php echo $text ?> </div>
+																			<div class="profile-info-value">
+																				<span><?php echo $r->$text ?></span>
+																			</div>
+																		</div>
+																	<?php
+																		
+																	 } 
+																 ?>
+																<div class="profile-info-row">
+																	<div class="profile-info-name">RightToolMonitorXPeak </div>
+																	<div class="profile-info-value">
+																		<span><?php echo $r->RightToolMonitorXPeak ?></span>
+																	</div>
+																</div>
+																<div class="profile-info-row">
+																	<div class="profile-info-name">RightToolMonitorYPeak </div>
+																	<div class="profile-info-value">
+																		<span><?php echo $r->RightToolMonitorYPeak ?></span>
+																	</div>
+																</div>
+															</div>
+												
+														</td>
+														<td class="center" style="background-color:#ffffff">
+																<div class="width-80 label label-info label-xlg arrowed-in arrowed-in-right">
+																			<div class="inline position-relative">
+																					<span class="white">LeftToolMonitor</span>
+																			</div>
+																		</div>
+																<div class="profile-user-info profile-user-info-striped">
+																	<?php
+																	 for($i = 1;$i<=12; $i++){
+																		for($x=1;$x<=2;$x++){
+																		switch ($x) {
+																			case "1":
+																				$name = "X";
+																				break;
+																			case "2":
+																				$name = "Z";
+																				break;
+																			}
+																		$text ="LeftToolMonitorTurretST".$i.$name;
+																		?>
+																		<div class="profile-info-row">
+																			<div class="profile-info-name"><?php echo $text ?> </div>
+																			<div class="profile-info-value">
+																				<span><?php echo $r->$text ?></span>
+																			</div>
+																		</div>
+																	<?php
+																		}	
+																	 } 
+																 ?>
+														     	</div>
+												
+														</td>
+														<td class="center" style="background-color:#ffffff">
+																<div class="width-80 label label-info label-xlg arrowed-in arrowed-in-right">
+																			<div class="inline position-relative">
+																					<span class="white">RightToolMonitor</span>
+																			</div>
+																</div>
+																<div class="profile-user-info profile-user-info-striped">
+																	<?php
+																	 for($i = 1;$i<=12; $i++){//SHOW TOTAL
+																		for($x=1;$x<=2;$x++){//DUPICATE IN TOTAL
+																		switch ($x) {
+																			case "1":
+																				$name = "X";
+																				break;
+																			case "2":
+																				$name = "Z";
+																				break;
+																			}
+																		$text ="RightToolMonitorTurretST".$i.$name;
+																		?>
+																		<div class="profile-info-row">
+																			<div class="profile-info-name"><?php echo $text ?> </div>
+																			<div class="profile-info-value">
+																				<span><?php echo $r->$text ?></span>
+																			</div>
+																		</div>
+																	<?php
+																		}	
+																	 } 
+																 ?>
+														     	</div>
+														</td>
+														<td class="center" style="background-color:#ffffff">
+																<div class="width-80 label label-info label-xlg arrowed-in arrowed-in-right">
+																			<div class="inline position-relative">
+																					<span class="white">PPGFBCH</span>
+																			</div>
+																</div>
+																<div class="profile-user-info profile-user-info-striped">
+																	<?php
+																	 for($i = 1;$i<=15; $i++){
+																		for($x=1;$x<=3;$x++){
+																		switch ($x) {
+																			case "1":
+																				$name = "MeasumentData";
+																				break;
+																			case "2":
+																				$name = "OffsetData";
+																				break;
+																			case "3":
+																				$name = "OffsetExecution";
+																				break;	
+																			}
+																		$text ="PPGFBCH".$i.$name;
+																		?>
+																		<div class="profile-info-row">
+																			<div class="profile-info-name"><?php echo $text ?> </div>
+																			<div class="profile-info-value">
+																				<span><?php echo $r->$text ?></span>
+																			</div>
+																		</div>
+																<?php
+																		}	
+																	 } 
+																 ?>
+																</div>
 															
-														</td>
-														<td class="center" style="background-color:#ffffff">
-																<div class="width-80 label label-info label-xlg arrowed-in arrowed-in-right">
-																			<div class="inline position-relative">
-																					<span class="white">ST1</span>
-																			</div>
-																		</div>
-																<div class="profile-user-info profile-user-info-striped">
-																	<div class="profile-info-row">
-																		<div class="profile-info-name">ST1SVPos </div>
-																		<div class="profile-info-value">
-																			<span><?php echo $r->ST1SVPos ?></span>
-																		</div>
-																	</div>
-												
-																<div class="profile-info-row">
-																	<div class="profile-info-name"> ST1SVLoad</div>
-																	<div class="profile-info-value">
-																		<span><?php echo $r->ST1SVLoad ?></span>
-																	</div>
-																</div>
-												
-																<div class="profile-info-row">
-																	<div class="profile-info-name"> ST1Judgment</div>
-																	<div class="profile-info-value">
-																		<span><?php echo $r->ST1Judgment ?></span>
-																	</div>
-																</div>
-															</div>
 												
 														</td>
-														<td class="center" style="background-color:#ffffff">
-																<div class="width-80 label label-info label-xlg arrowed-in arrowed-in-right">
-																			<div class="inline position-relative">
-																					<span class="white">ST2</span>
-																			</div>
-																		</div>
-																<div class="profile-user-info profile-user-info-striped">
-																	<div class="profile-info-row">
-																		<div class="profile-info-name">ST2LeakRate </div>
-																		<div class="profile-info-value">
-																			<span><?php echo $r->ST2LeakRate ?></span>
-																		</div>
-																	</div>
 												
-																<div class="profile-info-row">
-																	<div class="profile-info-name">ST2MaxSet </div>
-																	<div class="profile-info-value">
-																		<span><?php echo $r->ST2MaxSet ?></span>
-																	</div>
-																</div>
-												
-																<div class="profile-info-row">
-																	<div class="profile-info-name">ST2MinSet </div>
-																	<div class="profile-info-value">
-																		<span><?php echo $r->ST2MinSet ?></span>
-																	</div>
-																</div>
-																<div class="profile-info-row">
-																	<div class="profile-info-name">ST2Channel </div>
-																	<div class="profile-info-value">
-																		<span><?php echo $r->ST2Channel ?></span>
-																	</div>
-																</div>
-																<div class="profile-info-row">
-																	<div class="profile-info-name">ST2Judgment </div>
-																	<div class="profile-info-value">
-																		<span><?php echo $r->ST2Judgment ?></span>
-																	</div>
-																</div>
-															</div>
-												
-														</td>
-														<td class="center" style="background-color:#ffffff">
-																<div class="width-80 label label-info label-xlg arrowed-in arrowed-in-right">
-																			<div class="inline position-relative">
-																					<span class="white">ST3</span>
-																			</div>
-																		</div>
-																<div class="profile-user-info profile-user-info-striped">
-																	<div class="profile-info-row">
-																		<div class="profile-info-name">ST3LeakRate </div>
-																		<div class="profile-info-value">
-																			<span><?php echo $r->ST3LeakRate ?></span>
-																		</div>
-																	</div>
-												
-																<div class="profile-info-row">
-																	<div class="profile-info-name">ST3MaxSet </div>
-																	<div class="profile-info-value">
-																		<span><?php echo $r->ST3MaxSet ?></span>
-																	</div>
-																</div>
-												
-																<div class="profile-info-row">
-																	<div class="profile-info-name">ST3MinSet </div>
-																	<div class="profile-info-value">
-																		<span><?php echo $r->ST3MinSet ?></span>
-																	</div>
-																</div>
-																<div class="profile-info-row">
-																	<div class="profile-info-name">ST3Channel </div>
-																	<div class="profile-info-value">
-																		<span><?php echo $r->ST3Channel ?></span>
-																	</div>
-																</div>
-																<div class="profile-info-row">
-																	<div class="profile-info-name">ST3MarkCode </div>
-																	<div class="profile-info-value">
-																		<span><?php echo $r->ST3MarkCode ?></span>
-																	</div>
-																</div>
-																<div class="profile-info-row">
-																	<div class="profile-info-name">ST3Judgment </div>
-																	<div class="profile-info-value">
-																		<span><?php echo $r->ST3Judgment ?></span>
-																	</div>
-																</div>
-															</div>
-												
-														</td>
+													
+														
 													
 														<td style="border:none;"></td>
 														<td style="border:none;"></td>
 														<td style="border:none;"></td>
-														<td style="border:none;"></td>
-														<td style="border:none;"></td>
+														
 														</div>
 													
 												</tr>
@@ -335,7 +421,7 @@
        			     "orderable": false,
 						"targets": [0,1, 2,3,4,5,6,7]
        				 }
-],
+					],
 					//"bProcessing": true,
 			        //"bServerSide": true,
 			        //"sAjaxSource": "http://127.0.0.1/table.php"	,
@@ -351,93 +437,9 @@
 					//you may want to wrap the table inside a "div.dataTables_borderWrap" element
 			
 					//"iDisplayLength": 50
-			
-			
-					select: {
-						style: 'multi'
-					}
+
 			    } );
 
-				myTable.on( 'select', function ( e, dt, type, index ) {
-					if ( type === 'row' ) {
-						$( myTable.row( index ).node() ).find('input:checkbox').prop('checked', true);
-					}
-				} );
-				myTable.on( 'deselect', function ( e, dt, type, index ) {
-					if ( type === 'row' ) {
-						$( myTable.row( index ).node() ).find('input:checkbox').prop('checked', false);
-					}
-				} );
-			
-			
-			
-			
-				/////////////////////////////////
-				//table checkboxes
-				$('th input[type=checkbox], td input[type=checkbox]').prop('checked', false);
-				
-				//select/deselect all rows according to table header checkbox
-				$('#dynamic-table > thead > tr > th input[type=checkbox], #dynamic-table_wrapper input[type=checkbox]').eq(0).on('click', function(){
-					var th_checked = this.checked;//checkbox inside "TH" table header
-					
-					$('#dynamic-table').find('tbody > tr ').each(function(){
-						var row = this;
-						if(th_checked) myTable.row(row).select();
-						else  myTable.row(row).deselect();
-					});
-				});
-				
-				//select/deselect a row when the checkbox is checked/unchecked
-				$('#dynamic-table').on('click', 'td input[type=checkbox]' , function(){
-					var row = $(this).closest('tr').get(0);
-					if(this.checked) myTable.row(row).deselect();
-					else myTable.row(row).select();
-				});
-
-
-				$('#btn_enable').click(function(e) {
-		
-				if(confirm('คุณต้องการเปิดการใช้งานนี้ใช่หรือไม่')){
-					
-					$('#frm_usermanagement').attr('action', '<?php echo base_url().'user/checkall_enable'; ?>');
-					$('#frm_usermanagement').submit();
-					
-				}else{
-					
-					return false;
-				}
-				
-		       
-				
-		    });
-			
-			$('#btn_disable').click(function(e) {
-				
-				if(confirm('คุณต้องการระงับรายการนี้ใช่หรือไม่')){
-				
-		       		$('#frm_usermanagement').attr('action', '<?php echo base_url().'user/checkall_disable'; ?>');
-					$('#frm_usermanagement').submit();
-				
-				}else{
-				
-					return false;	
-				}
-				
-		    });
-			
-			$('#btn_delete').click(function(e) {
-				
-				if(confirm('คุณต้องการลบรายการใช้งานนี้ใช่หรือไม่')){
-				
-		        	$('#frm_usermanagement').attr('action', '<?php echo base_url().'user/checkall_delete'; ?>');
-					$('#frm_usermanagement').submit();
-				
-				}else{
-					
-					return false;
-				}
-				
-		    });
 
 			
 				$('.show-details-btn').on('click', function(e) {

@@ -11,12 +11,12 @@ class Alarm extends CI_Controller {
          $this->model->load_menu();
     }
 
-	public function show()
+	public function manage()
     {	
         $db1 = $this->load->database('smart_fac',TRUE); 
         $query = $db1->query('select * from Table_Alarm');
         $data['result'] = $query->result();
-        $this->load->view('table_alarm/manage',$data);
+        $this->load->view('smart_fac/table_alarm',$data);
 
     }
 

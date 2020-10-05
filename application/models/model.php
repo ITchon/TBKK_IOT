@@ -33,7 +33,7 @@ class Model extends CI_Model
     {
       $id =  $this->session->userdata('su_id');
       $query = $this->db->query("SELECT * from sys_users WHERE su_id = $id AND enable != 0 "); 
-      $result = $query->result()[0];
+      $result[0] = $query->result();
       if( $result->mobile==0)
       echo "<script>alert('No Moblie Permission')</script>";
       redirect('login','refresh');   
@@ -50,26 +50,23 @@ class Model extends CI_Model
     public function load_menu()
   { 
 
-         $menu['menu'] = $this->model->showmenu($this->session->userdata('sug_id'),$this->session->userdata('su_id'));
+         $menu['menu'] = $this->model->showmenu($this->session->userdata('sug_id'));
         $url = trim($this->router->fetch_class().'/'.$this->router->fetch_method()); 
          $menu['mg']= $this->model->givemeid($url);
           $menu['submenu'] = $this->model->showsubmenu($this->session->userdata('su_id'));
          $this->load->view('header');
         $this->load->view('menu');
         $this->load->view('sidemenu',$menu);
-
-   
-
       
   }
-   function showmenu($sug_id,$su_id){
-    $sql =  'SELECT DISTINCT smg.name AS g_name, smg.icon_menu, sm.mg_id, smg.mg_id AS mg, smg.order_no 
+   function showmenu($sug_id){
+    $sql =  'SELECT DISTINCT smg.name AS g_name, smg.icon_menu, sm.mg_id, smg.order_no 
     FROM sys_menus AS sm 
     inner JOIN sys_menu_groups AS smg ON smg.mg_id = sm.mg_id
     inner join sys_permission_groups as spg ON spg.spg_id = smg.spg_id 
     inner join sys_users_groups_permissions as sugp ON sugp.spg_id = spg.spg_id
     where sug_id = '.$sug_id.' 
-    ORDER BY smg.order_no ASC';     
+    AND smg.enable != 0 ORDER BY smg.order_no ASC';     
     $query = $this->db->query($sql); 
     $result = $query->result();
     return $result;
@@ -80,7 +77,7 @@ class Model extends CI_Model
     $sql =  "SELECT  sm.name,sm.mg_id,sp.controller from sys_menus as sm
     inner join sys_permissions as sp on sp.sp_id = sm.sp_id
     inner join sys_users_permissions as sup on sup.sp_id = sp.sp_id
-    WHERE  sm.enable != 0 AND sp.enable != 0 ANd sup.su_id = $id ORDER BY sm.order_no ASC"; 
+    WHERE  sm.enable != 0 AND sp.enable != 0 ANd sup.su_id = $id  ORDER BY sm.order_no ASC"; 
     $query = $this->db->query($sql); 
     $result = $query->result(); 
     return $result;   
@@ -89,7 +86,7 @@ class Model extends CI_Model
 
  function givemeid($para){
   $sql ="SELECT *  FROM sys_menus sm inner join sys_permissions sp on sp.sp_id = sm.sp_id
-  WHERE controller ='$para'  ";
+  WHERE sp.controller ='$para'  ";
 
     $query = $this->db->query($sql);  
    $data = $query->result(); 
@@ -155,18 +152,17 @@ class Model extends CI_Model
     }
  }
 
-   public function updated_profile_data($fname,$lname,$gender,$email,$su_id)
+   public function updated_profile_data($data)
   {
      $sql1 ="UPDATE sys_users SET 
-                      firstname      = '$fname',
-                      lastname       = '$lname',
-                      gender         = '$gender',
-                      email          = '$email',
+                      firstname      = '$data[fname]',
+                      lastname       = '$data[lname]',
+                      gender         = '$data[gender]',
+                      email          = '$data[email]',
                       enable         = '1',
                       date_updated   = CURRENT_TIMESTAMP,
                       delete_flag    = '1' 
-
-                       WHERE su_id          = '$su_id' ";
+                       WHERE su_id          = '$data[su_id]' ";
                       
 
     $exc_user = $this->db->query($sql1);

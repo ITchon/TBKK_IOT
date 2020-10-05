@@ -1,4 +1,4 @@
-<div class="col-xs-6">
+<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                     <div class="jarviswidget" id="wid-id-4" data-widget-editbutton="false" data-widget-custombutton="false">
 		
 											<div class="page-header">
@@ -20,7 +20,7 @@
 												<div class="widget-body no-padding">
                                             <?php 
                                             if($this->uri->segment('3')==null){
-                                            echo form_open('usergroup/add', array('id'=>'smart-form-register', 'class'=>'form-horizontal'));?>
+                                            echo form_open('usergroup/insert', array('id'=>'smart-form-register', 'class'=>'form-horizontal'));?>
 
 											<div class="row">
 												<div class="col-xs-12">
@@ -29,7 +29,7 @@
 														<div class="col-xs-10">
 														<div class="form-group">
 															<span class="block input-icon input-icon-right">
-																<input type="text" id="name" name="txt_name" placeholder="Usergroup Name" class="width-100" value=""/>
+																<input type="text" id="name" name="g_name" placeholder="Usergroup Name" class="width-100" value=""/>
 															<i class="ace-icon fa fa-group"></i>
 															</span>
 														</div>
@@ -69,14 +69,14 @@
 
                                             <?php echo form_close(); 
                                             }else{
-                                                echo form_open('usergroup/add', array('id'=>'smart-form-register', 'class'=>'form-horizontal'));
+                                                echo form_open('usergroup/save_edit', array('id'=>'smart-form-register', 'class'=>'form-horizontal'));
                                                 $r1 = "";
                                                 $r2 = "";
-                                                if($res_edit->enable == 1){
+                                                if($res_edit->enable == 1):
                                                  $r1 = "checked";
-                                                }else{
+												else:
                                                  $r2 = "checked";
-                                                }
+                                                endif;
                                                 ?>
 
                                                 <div class="row">
@@ -86,7 +86,8 @@
                                                             <div class="col-xs-10">
                                                             <div class="form-group">
                                                                 <span class="block input-icon input-icon-right">
-                                                                    <input type="text" id="name" name="txt_name" placeholder="Usergroup Name" class="width-100" value="<?php echo $res_edit->name ?>"/>
+                                                                    <input type="text"  name="sug_id" value="<?php echo $res_edit->sug_id ?>" hidden/>
+                                                                    <input type="text" id="name" name="sug_name" placeholder="Usergroup Name" class="width-100" value="<?php echo $res_edit->name ?>"/>
                                                                 <i class="ace-icon fa fa-group"></i>
                                                                 </span>
                                                             </div>
@@ -118,7 +119,9 @@
     
                                                             <div class="clearfix form-actions">
                                                                 <div class="center">
-    
+																<a type="button" href="<?php echo base_url()?>usergroup/manage" class="btn btn-default">
+																		Back to Add 
+																</a>
                                                                <button type='submit'val='save' class='btn btn-primary'>Save</button>
     
                                                                 </div>

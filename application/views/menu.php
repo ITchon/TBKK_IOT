@@ -11,7 +11,7 @@
 				</button>
 
 				<div class="navbar-header pull-left ">
-					<a href="<?php echo base_url() . 'Dashboard/home' ; ?>" class="navbar-brand">
+					<a href="<?php echo base_url() . 'dashboard/manage' ; ?>" class="navbar-brand">
 					<i class="fa fa-react 	rotate-center"></i>
 
 						<small> &nbsp;TBKK IOT</small>
@@ -40,14 +40,14 @@
 
 							<ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
 								<li>
-									<a href="<?php echo base_url().'changepassword/account/'.$id;?>">
+									<a href="<?php echo base_url().'changepass/manage/'?>">
 										<i class="ace-icon fa fa-cog"></i>
 										Change Password
 									</a>
 								</li>
 
 								<li>
-									<a href="<?php echo base_url().'editprofile/account/'.$id;?>">
+									<a href="<?php echo base_url().'editprofile/manage/'?>">
 										<i class="ace-icon fa fa-user"></i>
 										Profile
 									</a>

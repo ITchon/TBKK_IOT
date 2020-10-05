@@ -56,24 +56,13 @@
 										</div>	
 										<table id="dynamic-table" class="table table-striped table-bordered table-hover">
 												<thead>
+	
 													<tr>
-								                    	<td colspan="9">
-									                    	<div id="btn_enable" class="btn btn-sm btn-success"><span class="fa fa-check-square-o"></span></div>
-									                    	<div id="btn_disable" class="btn btn-sm btn-danger"><span class="fa fa-times"></span></div>
-									                    	<div id="btn_delete" class="btn btn-sm btn-primary"><span class="fa fa-trash-o"></span></div>
-								                    	</td>
-								                    </tr>	
-													<tr>
-														<th class="center">
-															<label class="pos-rel">
-																<input type="checkbox" class="ace" />
-																<span class="lbl"></span>
-															</label>
-														</th>
+
 														<th>No</th>
-														<th>MachineNo</th>
-														<th>QRcode</th>
-														<th>Alarmcode</th>
+														<th>Machine No</th>
+														<th>QR code</th>
+														<th>Alarm code</th>
 														<th style="text-align:center;">
 															<i class="ace-icon fa fa-calendar bigger-110 hidden-480"></i>
 															Start Date
@@ -82,7 +71,6 @@
 															<i class="ace-icon fa fa-calendar bigger-110 hidden-480"></i>
 															End Date
 														</th>
-														<th>Action</th>
 														
 
 													</tr>
@@ -97,22 +85,14 @@
                    							
     											echo  
 												'<tr>
-													<td class="center">
-														<label class="pos-rel">
-															<input type="checkbox" class="ace" />
-															<span class="lbl"></span>
-														</label>
-													</td>
+					
 												    <td style="text-align:center;">'.$i.'</td>
     											    <td>'.$r->MachineNo.'</td>
     											    <td>'.$r->QRcode.'</td>
 													<td>'.$r->AlarmCode.'</td>
 													<td  class="text-center">'. date('Y-m-d H:i:s', strtotime($r->StartDateTime)).'</td>
 													<td  class="text-center">'. date('Y-m-d H:i:s', strtotime($r->EndDateTime)).'</td>
-													    <td>
-    											    <button type="button" value='.$r->Index.' class="btn btn-xs btn-default edit_form"><i class="fa fa-pencil"></i></button>
-    											    <button type="button" value='.$r->Index.' class="btn btn-xs btn-default delete"><i class="fa fa-trash-o"></i></button>
-                            						</td>    							 
+							 
 												</tr>';
 												$i++;	
 													} 
@@ -157,13 +137,8 @@
 					//   { "bSortable": false }
 					// ],
 					"aaSorting": [],
-					
-					"columnDefs": [
-      				  {  // set default column settings
-       			     "orderable": false,
-						"targets": [0,1, 2,3,4,5,6,7]
-       				 }
-],
+				
+      				// set default column settings
 					//"bProcessing": true,
 			        //"bServerSide": true,
 			        //"sAjaxSource": "http://127.0.0.1/table.php"	,
@@ -180,93 +155,9 @@
 			
 					//"iDisplayLength": 50
 			
-			
-					select: {
-						style: 'multi'
-					}
 			    } );
 
-				myTable.on( 'select', function ( e, dt, type, index ) {
-					if ( type === 'row' ) {
-						$( myTable.row( index ).node() ).find('input:checkbox').prop('checked', true);
-					}
-				} );
-				myTable.on( 'deselect', function ( e, dt, type, index ) {
-					if ( type === 'row' ) {
-						$( myTable.row( index ).node() ).find('input:checkbox').prop('checked', false);
-					}
-				} );
-			
-			
-			
-			
-				/////////////////////////////////
-				//table checkboxes
-				$('th input[type=checkbox], td input[type=checkbox]').prop('checked', false);
-				
-				//select/deselect all rows according to table header checkbox
-				$('#dynamic-table > thead > tr > th input[type=checkbox], #dynamic-table_wrapper input[type=checkbox]').eq(0).on('click', function(){
-					var th_checked = this.checked;//checkbox inside "TH" table header
-					
-					$('#dynamic-table').find('tbody > tr ').each(function(){
-						var row = this;
-						if(th_checked) myTable.row(row).select();
-						else  myTable.row(row).deselect();
-					});
-				});
-				
-				//select/deselect a row when the checkbox is checked/unchecked
-				$('#dynamic-table').on('click', 'td input[type=checkbox]' , function(){
-					var row = $(this).closest('tr').get(0);
-					if(this.checked) myTable.row(row).deselect();
-					else myTable.row(row).select();
-				});
-
-
-				$('#btn_enable').click(function(e) {
-		
-				if(confirm('คุณต้องการเปิดการใช้งานนี้ใช่หรือไม่')){
-					
-					$('#frm_usermanagement').attr('action', '<?php echo base_url().'user/checkall_enable'; ?>');
-					$('#frm_usermanagement').submit();
-					
-				}else{
-					
-					return false;
-				}
-				
-		       
-				
-		    });
-			
-			$('#btn_disable').click(function(e) {
-				
-				if(confirm('คุณต้องการระงับรายการนี้ใช่หรือไม่')){
-				
-		       		$('#frm_usermanagement').attr('action', '<?php echo base_url().'user/checkall_disable'; ?>');
-					$('#frm_usermanagement').submit();
-				
-				}else{
-				
-					return false;	
-				}
-				
-		    });
-			
-			$('#btn_delete').click(function(e) {
-				
-				if(confirm('คุณต้องการลบรายการใช้งานนี้ใช่หรือไม่')){
-				
-		        	$('#frm_usermanagement').attr('action', '<?php echo base_url().'user/checkall_delete'; ?>');
-					$('#frm_usermanagement').submit();
-				
-				}else{
-					
-					return false;
-				}
-				
-		    });
-
+	
 			
 				$('.show-details-btn').on('click', function(e) {
 					e.preventDefault();

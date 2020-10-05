@@ -9,6 +9,7 @@ public function __construct()
     {
         parent::__construct();
          $this->load->helper('url');
+
         $this->load->model('model');
         $this->load->model('model_user');
         $this->load->model('model_ajax');
@@ -19,7 +20,7 @@ public function __construct()
         
       $id = $this->input->post('id');
       $data['result'] =  $this->model_user->get_user(); 
-      $sql =  'select * from sys_users_permissions where su_id = '.$id.'';
+      $sql =  'select * from sys_users_permissions where su_id = '.$id.' ';
       $query = $this->db->query($sql); 
       $result_user= $query->result(); 
 
@@ -32,7 +33,7 @@ public function __construct()
       inner join sys_users_groups_permissions sugp ON sugp.spg_id = sp.spg_id 
       inner join sys_permission_groups spg on spg.spg_id = sp.spg_id 
       inner join sys_menu_groups smg on smg.spg_id = spg.spg_id
-      where sugp.sug_id= $sug_id ORDER BY smg.order_no ASC , sp.name";
+      where sugp.sug_id= $sug_id and sp.delete_flag != 0 ORDER BY smg.order_no ASC , sp.name";
       $query = $this->db->query($sql); 
       $result_group= $query->result();
      
@@ -157,6 +158,31 @@ public function __construct()
  
 
 
- 
+    public function upload()
+    {
+
+
+        $config['upload_path']   = './uploads/'; 
+        $config['allowed_types'] = 'gif|jpg|png'; 
+        $config['max_size']      = 1024;
+            $this->load->library('upload', $config);
+        $this->upload->do_upload('file');
+        if(!$this->upload->do_upload('file')) {
+                 echo "NO";
+          }else{
+            echo "<h1>Multiple Image uploaded successfully</h1>";
+
+          
+          }
+
+      
+
+
+exit;
+        redirect('issue/manage','refresh');   
+      
+
+    
+  }
  
 }
