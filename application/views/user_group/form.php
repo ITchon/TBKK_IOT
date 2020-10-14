@@ -1,4 +1,4 @@
-<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+<div class="col-xs-6">
                     <div class="jarviswidget" id="wid-id-4" data-widget-editbutton="false" data-widget-custombutton="false">
 		
 											<div class="page-header">
@@ -71,8 +71,9 @@
                                             }else{
                                                 echo form_open('usergroup/save_edit', array('id'=>'smart-form-register', 'class'=>'form-horizontal'));
                                                 $r1 = "";
-                                                $r2 = "";
-                                                if($res_edit->enable == 1):
+												$r2 = "";
+		
+                                                if($res_edit[0]->enable == 1):
                                                  $r1 = "checked";
 												else:
                                                  $r2 = "checked";
@@ -86,8 +87,8 @@
                                                             <div class="col-xs-10">
                                                             <div class="form-group">
                                                                 <span class="block input-icon input-icon-right">
-                                                                    <input type="text"  name="sug_id" value="<?php echo $res_edit->sug_id ?>" hidden/>
-                                                                    <input type="text" id="name" name="sug_name" placeholder="Usergroup Name" class="width-100" value="<?php echo $res_edit->name ?>"/>
+                                                                    <input type="text"  name="sug_id" value="<?php echo $res_edit[0]->sug_id ?>" hidden/>
+                                                                    <input type="text" id="name" name="sug_name" placeholder="Usergroup Name" class="width-100" value="<?php echo $res_edit[0]->name ?>"/>
                                                                 <i class="ace-icon fa fa-group"></i>
                                                                 </span>
                                                             </div>

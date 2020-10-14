@@ -14,7 +14,7 @@ class Zone3 extends CI_Controller {
 	public function manage()
     {	
         $db1 = $this->load->database('smart_fac',TRUE); 
-        $query = $db1->query('select * from Table_Zone3_Brother');
+        $query = $db1->query('select * from Table_Line1_Zone3_Brother');
         $data['result'] = $query->result();
         $this->load->view('smart_fac/table_zone3_brother',$data);
 

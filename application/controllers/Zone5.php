@@ -14,7 +14,7 @@ class Zone5 extends CI_Controller {
 	public function manage()
     {	
         $db1 = $this->load->database('smart_fac',TRUE); 
-        $query = $db1->query('select * from Table_Zone5_LeakTest');
+        $query = $db1->query('select * from Table_Line1_Zone5_LeakTest');
         $data['result'] = $query->result();
         $this->load->view('smart_fac/table_zone5_leaktest',$data);
 
@@ -23,7 +23,7 @@ class Zone5 extends CI_Controller {
 	public function edit()
     {	
         $db1 = $this->load->database('smart_fac',TRUE); 
-        $query = $db1->query('select * from Table_Zone5_LeakTest');
+        $query = $db1->query('select * from Table_Line1_Zone5_LeakTest');
         $data['result'] = $query->result();
         $this->load->view('smart_fac/zone5/edit');
     }

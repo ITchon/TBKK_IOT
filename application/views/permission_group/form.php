@@ -96,10 +96,10 @@
 										<div class="col-xs-12">
 											<div class="form-group">
 													<label class="col-sm-2 control-label no-padding-right" for="form-field-2">  </label>
-													<input type="text" name="spg_id" placeholder="Permission Name" class="width-100" value="<?php echo $res_edit->spg_id ?>" hidden />
+													<input type="text" name="spg_id" placeholder="Permission Name" class="width-100" value="<?php echo $res_edit[0]->spg_id ?>" hidden />
 													<div class="col-xs-8 col-sm-8">
 														<span class="block input-icon input-icon-right">
-																			<input type="text" name="spg_name" placeholder="Permission Name" class="width-100" value="<?php echo $res_edit->name ?>" required/>
+																			<input type="text" name="spg_name" placeholder="Permission Name" class="width-100" value="<?php echo $res_edit[0]->name ?>" required/>
 																			<i class="ace-icon fa fa-unlock-alt"></i>
 																		</span>
 

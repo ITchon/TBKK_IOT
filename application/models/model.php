@@ -33,8 +33,8 @@ class Model extends CI_Model
     {
       $id =  $this->session->userdata('su_id');
       $query = $this->db->query("SELECT * from sys_users WHERE su_id = $id AND enable != 0 "); 
-      $result[0] = $query->result();
-      if( $result->mobile==0)
+      $result = $query->result();
+      if( $result[0]->mobile==0)
       echo "<script>alert('No Moblie Permission')</script>";
       redirect('login','refresh');   
       exit;

@@ -72,8 +72,8 @@ class Model_user extends CI_Model
 
       public function enableUser($key){
         $query = $this->db->query("SELECT * from sys_users WHERE su_id = $key "); 
-        $result[0] = $query->result();
-        if( $result->enable==0){
+        $result = $query->result();
+        if( $result[0]->enable==0){
         $sqlEdt = "UPDATE sys_users SET enable='1' , date_updated=CURRENT_TIMESTAMP WHERE su_id={$key};";
         $exc_user = $this->db->query($sqlEdt);
         }
@@ -94,8 +94,8 @@ class Model_user extends CI_Model
    
         if ($key){
           $query = $this->db->query("SELECT * from sys_users WHERE su_id = $key "); 
-          $result[0]= $query->result();
-          if( $result->mobile==0 ){
+          $result = $query->result();
+          if( $result[0]->mobile==0 ){
           $sqlEdt = "UPDATE sys_users SET mobile='1' , date_updated=CURRENT_TIMESTAMP WHERE su_id={$key};";
           $exc_user = $this->db->query($sqlEdt);
           }

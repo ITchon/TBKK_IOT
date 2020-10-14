@@ -94,7 +94,7 @@
 															</a>
 														</div>
 													</td>
-												    <td >'.$r->Index.'</td>
+												    <td>'.$r->Index.'</td>
     											    <td>'.$r->MachineNo.'</td>
     											    <td>'.$r->DateTime.'</td>
     											    <td>'.$r->Shift.'</td>
@@ -177,68 +177,11 @@
 																				<span><?php echo $r->ID2Y ?></span>
 																			</div>
 																		</div>
-																		<div class="profile-info-row">
-																			<div class="profile-info-name">  D_Type </div>
 
-																			<div class="profile-info-value">
-																				<span><?php echo $r->D_Type ?></span>
-																			</div>
-																		</div>
 																	
 																	</div>
 																	<!-- ------------------------------------------------------------------- -->
-																	<div class="width-80 label label-info label-xlg arrowed-in arrowed-in-right">
-																			<div class="inline position-relative">
-																					<span class="white">Text</span>
-																			</div>
-																		</div>
-											
-																	<div class="profile-user-info profile-user-info-striped">
-																		<div class="profile-info-row">
-																			<div class="profile-info-name">L_CuttingProcess</div>
-																			<div class="profile-info-value">
-																				<span><?php echo $r->L_CuttingProcess ?></span>
-																			</div>
-																		</div>
-
-																		<div class="profile-info-row">
-																			<div class="profile-info-name"> R_CuttingProcess </div>
-
-																			<div class="profile-info-value">
-																				<span><?php echo $r->R_CuttingProcess ?></span>
-																			</div>
-																		</div>
-
-																		<div class="profile-info-row">
-																			<div class="profile-info-name"> L_MainChuckWork2DNo  </div>
-
-																			<div class="profile-info-value">
-																				<span><?php echo $r->L_MainChuckWork2DNo ?></span>
-																			</div>
-																		</div>
-																		<div class="profile-info-row">
-																			<div class="profile-info-name"> R_MainChuckWork2DNo  </div>
-
-																			<div class="profile-info-value">
-																				<span><?php echo $r->R_MainChuckWork2DNo ?></span>
-																			</div>
-																		</div>
-																		<div class="profile-info-row">
-																			<div class="profile-info-name"> D_2DReaderWork2DNo  </div>
-
-																			<div class="profile-info-value">
-																				<span><?php echo $r->D_2DReaderWork2DNo ?></span>
-																			</div>
-																		</div>
-																		<div class="profile-info-row">
-																			<div class="profile-info-name"> GaugeStationWork2DNo  </div>
-
-																			<div class="profile-info-value">
-																				<span><?php echo $r->GaugeStationWork2DNo ?></span>
-																			</div>
-																		</div>
 																	
-																	</div>
 																	
 														</td>
 														
@@ -277,7 +220,9 @@
 																			</div>
 																		</div>
 																</div>
+														</td>
 																<!-- ------------------------------------------------------------------- -->
+														<td class="center" style="background-color:#ffffff">
 																<div class="width-80 label label-info label-xlg arrowed-in arrowed-in-right">
 																			<div class="inline position-relative">
 																					<span class="white">RightTool</span>
@@ -389,7 +334,7 @@
 																		</div>
 																<div class="profile-user-info profile-user-info-striped">
 																	<?php
-																	 for($i = 1;$i<=15; $i++){//SHOW TOTAL
+																	 for($i = 1;$i<=8; $i++){//SHOW TOTAL
 																		for($x=1;$x<=3;$x++){//DUPICATE IN TOTAL
 																		switch ($x) {
 																			case "1":
@@ -465,15 +410,15 @@
 																				</div>
 																			</div>
 																			<div class="profile-info-row">
-																				<div class="profile-info-name">Height1Judge </div>
+																				<div class="profile-info-name">Height1DIA407Judge </div>
 																				<div class="profile-info-value">
-																					<span><?php echo $r->Height1Judge ?></span>
+																					<span><?php echo $r->Height1DIA407Judge ?></span>
 																				</div>
 																			</div>
 																			<div class="profile-info-row">
-																				<div class="profile-info-name">Height1Unit </div>
+																				<div class="profile-info-name">Height1DIA407Unit </div>
 																				<div class="profile-info-value">
-																					<span><?php echo $r->Height1Unit ?></span>
+																					<span><?php echo $r->Height1DIA407Unit ?></span>
 																				</div>
 																			</div>
 																			<div class="profile-info-row">
@@ -504,7 +449,7 @@
 
 														</td>
 							
-														<td style="border:none;"></td>
+													
 														
 														</div>
 													
@@ -576,12 +521,11 @@
 
 	
 
-			
-				$('.show-details-btn').on('click', function(e) {
-					e.preventDefault();
+				$(document).on('click', '.show-details-btn', function() {
 					$(this).closest('tr').next().toggleClass('open');
 					$(this).find(ace.vars['.icon']).toggleClass('fa-angle-double-down').toggleClass('fa-angle-double-up');
-				});
+    			});
+				
 			
 	
 				/***************/

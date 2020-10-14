@@ -32,7 +32,7 @@ class Permissiongroup extends CI_Controller {
             $id = $this->uri->segment('3');
             $sql =  "SELECT * from sys_permission_groups where spg_id = $id";
             $query = $this->db->query($sql); 
-           $data['res_edit']= $query->result();
+           $data['res_edit'] = $query->result();
         }
         $this->load->view('permission_group/form',$data);
 		$this->load->view('script');

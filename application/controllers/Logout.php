@@ -14,11 +14,6 @@
        // $this->session->session_destroy();
         redirect('login','refresh');
     }
-		
-    function test()
-    {
- exit;
-    }
 }
 
 ?>

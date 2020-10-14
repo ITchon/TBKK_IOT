@@ -442,11 +442,10 @@
 
 
 			
-				$('.show-details-btn').on('click', function(e) {
-					e.preventDefault();
+				$(document).on('click', '.show-details-btn', function() {
 					$(this).closest('tr').next().toggleClass('open');
 					$(this).find(ace.vars['.icon']).toggleClass('fa-angle-double-down').toggleClass('fa-angle-double-up');
-				});
+    			});
 			
 	
 				/***************/

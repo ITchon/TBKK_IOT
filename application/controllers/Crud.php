@@ -9,7 +9,6 @@ public function __construct()
     {
         parent::__construct();
          $this->load->helper('url');
-
         $this->load->model('model');
         $this->load->model('model_user');
         $this->load->model('model_ajax');
@@ -158,31 +157,6 @@ public function __construct()
  
 
 
-    public function upload()
-    {
-
-
-        $config['upload_path']   = './uploads/'; 
-        $config['allowed_types'] = 'gif|jpg|png'; 
-        $config['max_size']      = 1024;
-            $this->load->library('upload', $config);
-        $this->upload->do_upload('file');
-        if(!$this->upload->do_upload('file')) {
-                 echo "NO";
-          }else{
-            echo "<h1>Multiple Image uploaded successfully</h1>";
-
-          
-          }
-
-      
-
-
-exit;
-        redirect('issue/manage','refresh');   
-      
-
-    
-  }
+ 
  
 }

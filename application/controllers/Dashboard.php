@@ -12,7 +12,7 @@ class Dashboard extends CI_Controller {
 		$this->model->load_menu();
 	}
 	public function manage(){
-        $this->load->view('welcome_message');
+        $this->load->view('dashboard');
 	}
 }
 

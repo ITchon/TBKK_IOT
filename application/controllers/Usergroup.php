@@ -31,10 +31,11 @@ class Usergroup extends CI_Controller {
 
         if ($this->uri->segment('3')!=null){
             $id = $this->uri->segment('3');
-            $sql =  "SELECT * FROM sys_user_groups WHERE delete_flag != 0 AND sug_id != 1
+            $sql =  "SELECT * FROM sys_user_groups WHERE delete_flag != 0 
             and sug_id = $id";
             $query = $this->db->query($sql); 
-           $data['res_edit'] = $query->result()[0];
+           $data['res_edit'] = $query->result();
+           
         }
         
         $this->load->view('user_group/form',$data); 

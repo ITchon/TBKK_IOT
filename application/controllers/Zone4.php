@@ -14,7 +14,7 @@ class Zone4 extends CI_Controller {
 	public function manage()
     {	
         $db1 = $this->load->database('smart_fac',TRUE); 
-        $query = $db1->query('select * from Table_Zone4_Mitsu_Muratech');
+        $query = $db1->query('select * from Table_Line1_Zone4_Mitsu_Muratech');
         $data['result'] = $query->result();
         $this->load->view('smart_fac/table_zone4_mitsu_muratech',$data);
 

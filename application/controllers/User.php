@@ -171,15 +171,24 @@ class User extends CI_Controller {
 
     public function save_edit()
     {
+        $su_id =  $this->input->post('su_id');
+        $username =  $this->input->post('username');
+        $password =  $this->input->post('password');
+        $gender =  $this->input->post('gender');
+        $fname =  $this->input->post('fname');
+        $lname =  $this->input->post('lname');
+        $email =  $this->input->post('email');
+        $sug_id =  $this->input->post('sug_id');
+
         $data = array(
-            'su_id' =>    $this->input->post('su_id');
-            'username' => $this->input->post('username');
-            'password' => $this->input->post('password');
-            'gender' =>   $this->input->post('gender');
-            'fname' =>    $this->input->post('fname');
-            'lname' =>    $this->input->post('lname');
-            'email' =>    $this->input->post('email');
-            'sug_id' =>   $this->input->post('sug_id');
+            'su_id' => $su_id,
+            'username' => $username,
+            'password' => $password,
+            'gender' => $gender,
+            'fname' => $fname,
+            'lname' => $lname,
+            'email' => $email,
+            'sug_id' => $sug_id
         );
 
         $this->model_user->save_edit_u($data);
