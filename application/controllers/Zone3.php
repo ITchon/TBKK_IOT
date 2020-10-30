@@ -8,7 +8,9 @@ class Zone3 extends CI_Controller {
          parent::__construct(); 
 
          $this->load->model('model');
+         $this->model->CheckSession();
          $this->model->load_menu();
+
     }
 
 	public function manage()
@@ -17,8 +19,8 @@ class Zone3 extends CI_Controller {
         $query = $db1->query('select * from Table_Line1_Zone3_Brother');
         $data['result'] = $query->result();
         $this->load->view('smart_fac/table_zone3_brother',$data);
-
- 
+        $this->load->view('smart_fac/modal');
+        $this->load->view('smart_fac/script');
     }
 
 

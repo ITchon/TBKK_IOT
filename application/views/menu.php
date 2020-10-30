@@ -12,8 +12,7 @@
 
 				<div class="navbar-header pull-left ">
 					<a href="<?php echo base_url() . 'dashboard/manage' ; ?>" class="navbar-brand">
-					<i class="fa fa-react 	rotate-center"></i>
-
+					<i class="fab fa-react 	rotate-center"></i>
 						<small> &nbsp;TBKK IOT</small>
 					</a>
 				</div>

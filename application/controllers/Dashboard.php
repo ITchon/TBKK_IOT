@@ -8,7 +8,8 @@ class Dashboard extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->database(); 
-        $this->load->model('model');
+		$this->load->model('model');
+		$this->model->CheckSession();
 		$this->model->load_menu();
 	}
 	public function manage(){

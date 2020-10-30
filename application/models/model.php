@@ -60,16 +60,18 @@ class Model extends CI_Model
       
   }
    function showmenu($sug_id){
+     
     $sql =  'SELECT DISTINCT smg.name AS g_name, smg.icon_menu, sm.mg_id, smg.order_no 
     FROM sys_menus AS sm 
     inner JOIN sys_menu_groups AS smg ON smg.mg_id = sm.mg_id
     inner join sys_permission_groups as spg ON spg.spg_id = smg.spg_id 
     inner join sys_users_groups_permissions as sugp ON sugp.spg_id = spg.spg_id
     where sug_id = '.$sug_id.' 
-    AND smg.enable != 0 ORDER BY smg.order_no ASC';     
-    $query = $this->db->query($sql); 
+    AND smg.enable != 0 ORDER BY smg.order_no ASC';   
+    $query = $this->db->query($sql);   
     $result = $query->result();
     return $result;
+     
  }
 
 

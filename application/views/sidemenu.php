@@ -22,7 +22,7 @@
 					?>
 					<li class="<?php echo($r->mg_id == $mg[0]->mg_id)? " active open":"" ?>">
 						<a href="#" class="dropdown-toggle">
-							<i class="menu-icon fa <?php echo $r->icon_menu ?>"></i>
+							<i class="menu-icon <?php echo $r->icon_menu ?>"></i>
 							<span class="menu-text"> <?php echo $r->g_name ?> </span>
 							<b class="arrow fa fa-angle-down"></b>
 						</a>
@@ -33,14 +33,10 @@
 				<?php 	
 		
 				foreach($submenu as $s)  {  
-					$segment2 = $this->router->fetch_method();
-					if($segment2 == 'add' || $segment2 == 'edit'){
-							$segment2 = 'manage';
-				   }
-				   $url = trim($this->router->fetch_class().'/'.$segment2); 
-
+					$segment2 = $this->uri->segment('2');
+				    $url = trim($this->router->fetch_class().'/'.$segment2); 
                     if($r->mg_id == $s->mg_id) { ?>
-							<li class="<?php if($mg[0]->controller == $s->controller || $s->controller == $url):echo " active " ; endif ?>">
+							<li class="<?php if($mg[0]->controller == $s->controller || $s->controller == $url){echo " active " ; }?>">
 								<a href="<?php echo base_url()?><?php echo $s->controller ?>">
 									<i class="menu-icon fa fa-caret-right"></i>
                                     <?php echo   $s->name ?>
@@ -49,7 +45,7 @@
 								<b class="arrow"></b>
 							</li>
                             <?php }
-			}
+				}
 			?>
 						</ul>
 					</li>

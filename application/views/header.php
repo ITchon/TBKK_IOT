@@ -17,7 +17,7 @@
 		 <script src="https://kit.fontawesome.com/801a394883.js" crossorigin="anonymous"></script>
 		<!-- bootstrap & fontawesome -->
 		<link rel="stylesheet" href="<?php echo base_url() . $css_url; ?>bootstrap.min.css" />
-		<link rel="stylesheet" href="<?php echo base_url() . $asset_url; ?>font-awesome/4.5.0/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="<?php echo base_url() . $asset_url; ?>font-awesome/5.15.1/css/fontawesome.min.css" />
 
 		<!-- page specific plugin styles -->
 		<link rel="stylesheet" href="<?php echo base_url() . $css_url; ?>colorbox.min.css" />
@@ -104,6 +104,9 @@
 		<script src="<?php echo base_url() . $js_url; ?>ace.min.js"></script>
 
 	<style>
+		.hide-it{
+			
+		}
 		.select-info{
 			padding-left : 10px /*Data table row select */
 		}
@@ -151,6 +154,9 @@
 @media screen and (max-width: 600px) {
   table {
     border: 0;
+  }
+ 	.nav-list>li>a>.menu-icon {
+    font-weight: 900;
   }
 
   table caption {
@@ -201,5 +207,10 @@
 
 
 	</style>
-
+<script>
+        $(document).ready(function() {
+          $(".hide-it").fadeOut(5000);
+});
+   
+    </script>
 	</head>

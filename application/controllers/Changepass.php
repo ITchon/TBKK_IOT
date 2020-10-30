@@ -38,8 +38,6 @@ class changepass extends CI_Controller {
 
     public function changed_pass()
     {
-
-            
             $this->model->CheckSession();
             $cur_password=$this->input->post('txt_oldpwd');
             $new_password=$this->input->post('txt_newpwd');

@@ -12,6 +12,7 @@ public function __construct()
         $this->load->model('model');
         $this->load->model('model_user');
         $this->load->model('model_ajax');
+        $this->load->model('model_machine');
     }
     
     public function rule_user()
@@ -85,11 +86,11 @@ public function __construct()
             $sql3 =  "SELECT * from sys_permission_groups where enable != 0 and delete_flag != 0 ";
             $query = $this->db->query($sql3); 
             $result_group= $query->result(); 
-?>
+            ?>
             <input type="text" name="sug_id"  value="<?php echo $id ?> " hidden>
             <input type="text"  value="<?php echo $id ?> " hidden>
             <?php
-        echo '<button value='.$result[0]->sug_name.' id="sug_name" hidden></button>';
+            echo '<button value='.$result[0]->sug_name.' id="sug_name" hidden></button>';
 
                  foreach($result_group as $r){          
           ?>
@@ -113,18 +114,77 @@ public function __construct()
      
 
     }
-    public function fetch_part_drw()
+    //----------------- Smart fac --------------------
+    public function zone1()
     {
-     if($this->input->post('d_id'))
-     
-     {
-      echo $this->model_ajax->fetch_part_drw($this->input->post('d_id'));
-     }
+      $id = $this->input->post('id');
+      $db1 = $this->load->database('smart_fac',TRUE); 
+      $query = $db1->query("select * from table_Line1_zone1_muratech where [Index] = $id");
+      $data['result'] = $query->result();
+      $this->load->view('smart_fac/data_modal_zone1',$data);
+
+    }
+    public function zone2()
+    {
+      $id = $this->input->post('id');
+      $db1 = $this->load->database('smart_fac',TRUE); 
+      $query = $db1->query("select * from Table_Line1_Zone2_Muratech where [Index] = $id");
+      $data['result'] = $query->result();
+      $this->load->view('smart_fac/data_modal_zone2',$data);
+
+    }
+    public function zone3()
+    {
+      $id = $this->input->post('id');
+      $db1 = $this->load->database('smart_fac',TRUE); 
+      $query = $db1->query("select * from Table_Line1_Zone3_Brother where [Index] = $id");
+      $data['result'] = $query->result();
+      $this->load->view('smart_fac/data_modal_zone3',$data);
+
+    }
+    public function zone4()
+    {
+      $id = $this->input->post('id');
+      $db1 = $this->load->database('smart_fac',TRUE); 
+      $query = $db1->query("select * from Table_Line1_Zone4_Mitsu_Muratech where [Index] = $id");
+      $data['result'] = $query->result();
+      $this->load->view('smart_fac/data_modal_zone4',$data);
+
+    }
+    public function zone5()
+    {
+      $id = $this->input->post('id');
+      $db1 = $this->load->database('smart_fac',TRUE); 
+      $query = $db1->query("select * from Table_Line1_Zone5_LeakTest where [Index] = $id");
+      $data['result'] = $query->result();
+      $this->load->view('smart_fac/data_modal_zone5',$data);
+
+    }
+    //----------------- End of smart fac --------------------
+
+    public function machine_data()
+    {
+      $mach_name = $this->input->post('mach_name');
+      $mach_no = $this->model_machine->get_mach_no($mach_name) ;
+      $zone =  substr($mach_no,5,1)."<br>";
+      switch($zone){//Show view 
+        case 1 :
+          $data['result'] = $this->model_machine->machine_data_zone1($mach_no) ;
+          $this->load->view('smf_detail/machine_data_zone1',$data);
+        break;
+        case 4 :
+          $data['result'] = $this->model_machine->machine_data_zone4($mach_no) ;
+          $this->load->view('smf_detail/machine_data_zone4',$data);
+        break;
+        case 5 :
+          $data['result'] = $this->model_machine->machine_data_zone5($mach_no) ;
+          $this->load->view('smf_detail/machine_data_zone5',$data);
+        break;
+      }
+    
     }
 
-    
-    
-   
+
     public function delete_user()
     {
      if($this->input->post('id'))
@@ -135,28 +195,5 @@ public function __construct()
         ));
      }
     }
-    public function delete_part_drw()
-    {
-     if($this->input->post('id'))
-     {
-        $this->model_ajax->delete_part_drw($this->input->post('id'));	
-        echo json_encode(array(
-            "statusCode"=>200
-        ));
-     }
-    }
 
-
-    public function fetch_folder()
-    {
-     if($this->input->post('cus_id'))
-     {
-      echo $this->model_ajax->fetch_folder($this->input->post('cus_id'),$this->input->post('chkf'));
-     }
-    }
- 
-
-
- 
- 
 }

@@ -63,7 +63,6 @@
 								                    	</td>
 								                    </tr>	
 													<tr>
-
 														<th class="center">
 															Detail
 														</th>
@@ -74,7 +73,6 @@
 														<th>Serial</th>
 														<th>QRrange</th>
 														<th>QRcode</th>											
-
 													</tr>
 												</thead>
 											<tbody >
@@ -87,14 +85,12 @@
                    							
     											echo  
 												'<tr>
+
 													<td class="center">
-														<div class="action-buttons">
-															<a href="#" class="green bigger-140 show-details-btn" title="Show Details">
-																<i class="ace-icon fa fa-angle-double-down"></i>
-																<span class="sr-only">Details</span>
-															</a>
-														</div>
-													</td>
+													<button  type="button" value='.$r->Index.' class="btn btn-xs btn-warning open-modal">
+														<i class="ace-icon fa fa-search bigger-120"></i>
+													</button>
+													</td>		 
 												    <td >'.$r->Index.'</td>
     											    <td>'.$r->MachineNo.'</td>
     											    <td>'.$r->DateTime.'</td>
@@ -102,56 +98,10 @@
 													<td>'.$r->Serial.'</td>
 													<td>'.$r->QRrange.'</td>
 													<td>'.$r->QRcode.'</td>
-															 
 												</tr>';
 												$i++;	
 									?>
-												<tr class="detail-row">
-													<div class="row">
-														<td></td>
-														<td class="center" style="background-color:#ffffff">
-																		<div class="width-80 label label-info label-xlg arrowed-in arrowed-in-right">
-																			<div class="inline position-relative">
-																					<span class="white">Spare</span>
-																			</div>
-																		</div>
-											
-																	<div class="profile-user-info profile-user-info-striped">
-																		<div class="profile-info-row text-left">
-																			<div class="profile-info-name"> ID Spare 1 </div>
-																			<div class="profile-info-value">
-																				<span><?php echo $r->ID_Spare1 ?></span>
-																			</div>
-																		</div>
-
-																		<div class="profile-info-row text-left">
-																			<div class="profile-info-name">  ID Spare 2 </div>
-
-																			<div class="profile-info-value">
-																				<span><?php echo $r->ID_Spare2 ?></span>
-																			</div>
-																		</div>
-
-																		<div class="profile-info-row text-left">
-																			<div class="profile-info-name">  ID Spare 3 </div>
-
-																			<div class="profile-info-value">
-																				<span><?php echo $r->ID_Spare3 ?></span>
-																			</div>
-																		</div>
-																	</div>
-															
-														</td>
-
-														<td style="border:none;"></td>
-														<td style="border:none;"></td>
-														<td style="border:none;"></td>
-														<td style="border:none;"></td>
-														<td style="border:none;"></td>
-														<td style="border:none;"></td>
-														</div>
-													
-												</tr>
+												
 												<?php
 											} 
 												} ?>
@@ -176,55 +126,3 @@
 					</div><!-- /.page-content -->
 				</div>
 			</div><!-- /.main-content -->
-
-                                        <script>
-                                        /***************/
-										
-				//initiate dataTables plugin
-				var myTable = 
-				$('#dynamic-table')
-				//.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
-				.DataTable( {
-					bAutoWidth: false,
-					// "aoColumns": [
-					//   { "bSortable": false },
-					//   null, null,null, null, null,
-					//   { "bSortable": false }
-					// ],
-					"aaSorting": [],
-					
-					"columnDefs": [
-      				  {  // set default column settings
-       			     "orderable": false,
-						"targets": [0,1, 2,3,4,5,6,7]
-       				 }
-					],
-					//"bProcessing": true,
-			        //"bServerSide": true,
-			        //"sAjaxSource": "http://127.0.0.1/table.php"	,
-			
-					//,
-					//"sScrollY": "200px",
-					//"bPaginate": false,
-			
-					//"sScrollX": "100%",
-					//"sScrollXInner": "120%",
-					//"bScrollCollapse": true,
-					//Note: if you are applying horizontal scrolling (sScrollX) on a ".table-bordered"
-					//you may want to wrap the table inside a "div.dataTables_borderWrap" element
-			
-					//"iDisplayLength": 50
-			
-			
-			    } );
-
-		
-			
-				$(document).on('click', '.show-details-btn', function() {
-					$(this).closest('tr').next().toggleClass('open');
-					$(this).find(ace.vars['.icon']).toggleClass('fa-angle-double-down').toggleClass('fa-angle-double-up');
-    			});
-			
-	
-				/***************/
-                </script>

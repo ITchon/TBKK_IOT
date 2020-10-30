@@ -8,6 +8,7 @@ class Master_alarm extends CI_Controller {
          parent::__construct(); 
 
          $this->load->model('model');
+         $this->model->CheckSession();
          $this->model->load_menu();
     }
 
